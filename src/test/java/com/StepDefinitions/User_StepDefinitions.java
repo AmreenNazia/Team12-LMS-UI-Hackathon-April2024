@@ -2,6 +2,7 @@ package com.StepDefinitions;
 
 import org.testng.Assert;
 
+import com.PageObjects.POM_HomePage;
 import com.PageObjects.POM_LoginPage;
 import com.PageObjects.POM_UserPage;
 import com.Utilities.Constant;
@@ -13,18 +14,19 @@ public class User_StepDefinitions {
 	TestContext testcontext;
 	POM_UserPage userpage;
 	POM_LoginPage loginpage;
+	POM_HomePage homepage;
 
 	public User_StepDefinitions(TestContext testcontext) {
 		
 		this.testcontext = testcontext;
-		loginpage = testcontext.pageobjectmanager.getPage_01();
-		userpage = testcontext.pageobjectmanager.getpage_02();
-	
+		loginpage = testcontext.pageobjectmanager.getLoginPage();
+		userpage = testcontext.pageobjectmanager.getUserPage();
+		homepage = testcontext.pageobjectmanager.getHomePage();
 	}
 	
 	@Given("Admin is on dashboard page after Login")
 	public void admin_is_on_dashboard_page_after_login() {
-		  Assert.assertEquals(loginpage.getHomePageTitle(),Constant.HOME_PAGE_TITLE);
+		  Assert.assertEquals(homepage.getHomePageTitle(),Constant.HOME_PAGE_TITLE);
 	}
 
 	@When("Admin clicks {string} from navigation bar")
