@@ -9,7 +9,6 @@ import com.PageObjects.POM_UserPage;
 public class pageObjectManager {
 	
 	WebDriver driver;
-	private POM_HomePage homepage;
 	private POM_LoginPage loginpage;
 	private POM_UserPage userpage;
 	
@@ -18,7 +17,7 @@ public class pageObjectManager {
 		this.driver = driver;
 	}
 	
- 
+	public POM_LoginPage getlogin() {
 		if(loginpage==null)
 		{
 			loginpage = new POM_LoginPage(driver);
@@ -26,7 +25,7 @@ public class pageObjectManager {
 		return loginpage;
 		
 	}
-	public POM_UserPage getpage_02() {
+	public POM_UserPage getuser() {
 		if(userpage==null)
 		{
 			userpage = new POM_UserPage(driver);
