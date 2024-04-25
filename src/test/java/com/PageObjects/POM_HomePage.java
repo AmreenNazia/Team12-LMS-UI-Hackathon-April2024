@@ -2,18 +2,17 @@ package com.PageObjects;
 
 import org.openqa.selenium.WebDriver;
 
-public class POM_HomePage {
+public class POM_LoginPage {
 	
 	WebDriver driver;
 	
-	public POM_HomePage(WebDriver driver)
+	public POM_LoginPage(WebDriver driver)
 	{
 		this.driver = driver;
 	}
 	
-	public String getHomePageTitle() {
-		String title = driver.getTitle();
-		return title;
-	}
+//	public void getHomepage() {
+//		
+//	}
 
 }
