@@ -26,19 +26,20 @@ import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.qameta.allure.Allure;
+ 
 
 
 public class AppHooks {
+
 	private WebDriver driver;
 	private BaseTest basefactory;
 	private Properties prop;
+ 
     
 	@Before
 	public void setUp() {
-		//Get Browser type from config file
-	   // ResourceBundle rb = ResourceBundle.getBundle("Config/config");
-		String browseName =  com.PageObjects.credentialResouceBundle.getBrowser();
-		System.out.println(browseName);
+	  String browseName =  com.PageObjects.credentialResouceBundle.getBrowser();
+ 		System.out.println(browseName);
 		//Initialize driver from driver factory class
 		basefactory = new BaseTest();
 		driver = basefactory.initializeDriver(browseName);
@@ -73,6 +74,5 @@ public class AppHooks {
 		
 		
 	}
-
 
 }

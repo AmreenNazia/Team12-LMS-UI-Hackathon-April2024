@@ -1,12 +1,12 @@
-package com.PageObjects;
+Opackage com.PageObjects;
 
 import org.openqa.selenium.WebDriver;
 
-public class POM_LoginPage {
+public class POM_HomePage {
 	
 	WebDriver driver;
 	
-	public POM_LoginPage(WebDriver driver)
+	public POM_HomePage(WebDriver driver)
 	{
 		this.driver = driver;
 	}

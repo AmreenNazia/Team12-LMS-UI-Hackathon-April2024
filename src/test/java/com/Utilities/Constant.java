@@ -7,4 +7,5 @@ public class Constant {
 
 //Explicit wait applies to specific web elements. It is more precise & helps avoid unnecessary delays.
     public static final int EXPLICIT_ELEMENT_WAIT_TIME=5;
+    public static final String HOME_PAGE_TITLE= "LMS";
 }
