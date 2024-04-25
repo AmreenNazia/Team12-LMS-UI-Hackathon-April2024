@@ -7,7 +7,7 @@ import com.PageObjects.POM_LoginPage;
 public class pageObjectManager {
 	
 	WebDriver driver;
-	private POM_LoginPage loginpage;
+	 
 	
 	public pageObjectManager(WebDriver driver)
 	{
