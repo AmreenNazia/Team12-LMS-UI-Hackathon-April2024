@@ -35,6 +35,7 @@ public class Login_StepDefinition {
 		String validUserName = rb.getString("user");
 		String validPassword = rb.getString("password");
 		loginpage.entervalidCredentials(validUserName, validPassword);
+		loginpage.login();
 
 	}
 
