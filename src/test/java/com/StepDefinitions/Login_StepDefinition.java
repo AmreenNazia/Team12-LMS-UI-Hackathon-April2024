@@ -1,12 +1,9 @@
 package com.StepDefinitions;
 
-import java.util.ResourceBundle;
-
 import org.testng.Assert;
 
-import com.PageObjects.POM_HomePage;
 import com.PageObjects.POM_LoginPage;
-import com.Utilities.LoggerLoad;
+import com.PageObjects.credentialResouceBundle;
 import com.Utilities.TestContext;
 
 import io.cucumber.java.en.Given;
@@ -17,6 +14,8 @@ public class Login_StepDefinition {
 
 	TestContext testcontext;
 	POM_LoginPage loginpage;
+	String validPassword;
+	String validUserName;
 
 	public Login_StepDefinition(TestContext testcontext) {
 
@@ -31,9 +30,9 @@ public class Login_StepDefinition {
 
 	@When("Admin enter valid credentials  and clicks login button")
 	public void admin_enter_valid_credentials_and_clicks_login_button() {
-		ResourceBundle rb = ResourceBundle.getBundle("Config/config");
-		String validUserName = rb.getString("user");
-		String validPassword = rb.getString("password");
+
+		validUserName = com.PageObjects.credentialResouceBundle.getUsername();
+		validPassword = com.PageObjects.credentialResouceBundle.getPassword();
 		loginpage.entervalidCredentials(validUserName, validPassword);
 		loginpage.login();
 
@@ -41,9 +40,8 @@ public class Login_StepDefinition {
 
 	@Then("Admin should land on dashboard page")
 	public void admin_should_land_on_dashboard_page() {
+
 		Assert.assertEquals(loginpage.getDashBoardTitle(), "LMS");
 	}
 
-}
-
-	
+ 
