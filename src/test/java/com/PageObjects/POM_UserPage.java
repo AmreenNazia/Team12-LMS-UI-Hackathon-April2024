@@ -21,7 +21,7 @@ WebDriver driver;
 	WebElement btn_user;
 	@FindBy(xpath = "//div[@class='box']/text()")
 	WebElement text;
-	@FindBy(xpath="//button[@id='user']//span")
+	@FindBy(xpath="//*[@id=\"user\"]/span[1]n")
 	WebElement user;
 	
 	

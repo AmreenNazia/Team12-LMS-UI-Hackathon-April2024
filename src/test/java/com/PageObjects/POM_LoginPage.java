@@ -15,30 +15,30 @@ public class POM_LoginPage {
 	{
 		this.driver = driver;
 	}
-	
-	@FindBy(xpath = "//input[@id='username']")
-	WebElement txt_user;
-	@FindBy(xpath ="//input[@id='password']")
-	WebElement txt_password;
-	@FindBy(xpath ="//button[@id='login']")
-	WebElement btn_login;
-	
+	@FindBy(id = "username")
+	WebElement username;
+	@FindBy(id = "password")
+	WebElement password;
+	@FindBy(id = "login")
+	WebElement login;
 
 	public String getLoginPage() {
-		return driver.getTitle();
+		String Title = driver.getTitle();
+		return Title;
 	}
 
-	 public void enterValidCredentials(String validUserName,String validPwd) {
-		 ElementsUtil.typeInputIntoElement(driver, txt_user,validUserName, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
-		 ElementsUtil.typeInputIntoElement(driver, txt_password,validPwd, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
-		 
-	 }
-	public void login() {
-		
-		ElementsUtil.ScrolltoElementandClick(driver, btn_login, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+	public void entervalidCredentials(String validUserName, String ValidPassword) {
+		ElementsUtil.typeInputIntoElement(driver, username, validUserName, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.typeInputIntoElement(driver, password, ValidPassword, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 	}
-	public String getHomePageTitle() {
-		return driver.getTitle();// DashBoard Page
+
+	public void login() {
+		ElementsUtil.ScrolltoElementandClick(driver, login, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+	}
+
+	public String getDashBoardTitle() {
+		String DashboardTitle = driver.getTitle();
+		return DashboardTitle;
 	}
 
 }

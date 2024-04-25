@@ -1,5 +1,7 @@
 package com.StepDefinitions;
 
+import java.util.ResourceBundle;
+
 import org.testng.Assert;
 
 import com.PageObjects.POM_LoginPage;
@@ -21,26 +23,24 @@ public class Login_StepDefinition {
 		this.testcontext = testcontext;
 		loginpage = testcontext.pageobjectmanager.getPage_01();
 	}
+	@Given("Admin is in login page")
+	public void admin_is_in_login_page() {
+		Assert.assertEquals(loginpage.getLoginPage(), "LMS");
+	}
+
+	@When("Admin enter valid credentials  and clicks login button")
+	public void admin_enter_valid_credentials_and_clicks_login_button() {
+		ResourceBundle rb = ResourceBundle.getBundle("Config/config");
+		String validUserName = rb.getString("user");
+		String validPassword = rb.getString("password");
+		loginpage.entervalidCredentials(validUserName, validPassword);
+
+	}
+
+	@Then("Admin should land on dashboard page")
+	public void admin_should_land_on_dashboard_page() {
+		Assert.assertEquals(loginpage.getDashBoardTitle(), "LMS");
+	}
+
 	 
-	@Given("User is already on Login page")
-	public void user_is_already_on_login_page() {
-	      Assert.assertEquals(loginpage.getLoginPage(), Constant.HOME_PAGE_TITLE);
-	}
-
-	@When("User enters valid {string} and valid {string}")
-	public void user_enters_valid_and_valid(String user, String password) {
-	     loginpage.enterValidCredentials(user, password);
-	}
-
-	@When("User clicks on login button")
-	public void user_clicks_on_login_button() {
-	     loginpage.login();
-	}
-
-	@Then("User should be redirected to DashBoard Page")
-	public void user_should_be_redirected_to_dash_board_page() {
-		String pageTitle =	loginpage.getHomePageTitle();
-		LoggerLoad.info("Home Page title is :-" + pageTitle);
-		Assert.assertEquals(loginpage.getHomePageTitle(),Constant.HOME_PAGE_TITLE );
-	}
 }

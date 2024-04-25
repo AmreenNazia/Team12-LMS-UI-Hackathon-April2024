@@ -24,7 +24,7 @@ public class User_StepDefinitions {
 	
 	@Given("Admin is on dashboard page after Login")
 	public void admin_is_on_dashboard_page_after_login() {
-		  Assert.assertEquals(loginpage.getHomePageTitle(),Constant.HOME_PAGE_TITLE);
+		  Assert.assertEquals(loginpage.getDashBoardTitle(),Constant.HOME_PAGE_TITLE);
 	}
 
 	@When("Admin clicks {string} from navigation bar")
