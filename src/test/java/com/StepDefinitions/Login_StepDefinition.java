@@ -1,12 +1,9 @@
 package com.StepDefinitions;
 
-import java.util.ResourceBundle;
-
 import org.testng.Assert;
 
-import com.PageObjects.POM_HomePage;
 import com.PageObjects.POM_LoginPage;
-import com.Utilities.LoggerLoad;
+import com.PageObjects.credentialResouceBundle;
 import com.Utilities.TestContext;
 
 import io.cucumber.java.en.Given;
@@ -17,6 +14,8 @@ public class Login_StepDefinition {
 
 	TestContext testcontext;
 	POM_LoginPage loginpage;
+	String validPassword;
+	String validUserName;
 
 	public Login_StepDefinition(TestContext testcontext) {
 
@@ -31,18 +30,56 @@ public class Login_StepDefinition {
 
 	@When("Admin enter valid credentials  and clicks login button")
 	public void admin_enter_valid_credentials_and_clicks_login_button() {
-		ResourceBundle rb = ResourceBundle.getBundle("Config/config");
-		String validUserName = rb.getString("user");
-		String validPassword = rb.getString("password");
+
+		validUserName = com.PageObjects.credentialResouceBundle.getUsername();
+		validPassword = com.PageObjects.credentialResouceBundle.getPassword();
 		loginpage.entervalidCredentials(validUserName, validPassword);
+		loginpage.login();
 
 	}
 
 	@Then("Admin should land on dashboard page")
 	public void admin_should_land_on_dashboard_page() {
+
 		Assert.assertEquals(loginpage.getDashBoardTitle(), "LMS");
 	}
 
-}
+/*	@When("Admin enter invalid credentials and clicks login button")
+	public void admin_enter_invalid_credentials_and_clicks_login_button() {
 
-	
+		String invalidUserName = credentialResouceBundle.getInvalidUsername();
+		String invalidPassword = credentialResouceBundle.getInvalidPassword();
+		loginpage.enterInvalidCredentials(invalidUserName, invalidPassword);
+		loginpage.login();
+	}
+
+	@Then("Error message please check username\\/password")
+	public void error_message_please_check_username_password() {
+
+		Assert.assertEquals(loginpage.getErrorMessage(), "Invalid username and password Please try again");
+	}
+
+/*	@When("Admin enter value only in password and clicks login button")
+	public void admin_enter_value_only_in_password_and_clicks_login_button() {
+		loginpage.nullUser(validPassword);
+		loginpage.login();
+	}
+
+	@When("Admin enter value only in username and clicks login button")
+	public void admin_enter_value_only_in_username_and_clicks_login_button() {
+		loginpage.nullPassword(validUserName);
+		loginpage.login();
+	}
+
+	@When("Admin enter valid credentials and clicks login button through keyboard")
+	public void admin_enter_valid_credentials_and_clicks_login_button_through_keyboard() {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}
+
+	@When("Admin enter valid credentials  and clicks login button through mouse")
+	public void admin_enter_valid_credentials_and_clicks_login_button_through_mouse() {
+		// Write code here that turns the phrase above into concrete actions
+		throw new io.cucumber.java.PendingException();
+	}*/
+}
