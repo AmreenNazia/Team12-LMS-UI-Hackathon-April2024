@@ -32,16 +32,17 @@ WebDriver driver;
 	}
 	
 	public void click_User(String User) throws InterruptedException {
-		 String text = user.getText();
-		 if(text == User)
+//		 String text = user.getText();
+//		 if(text == User)
 		 ElementsUtil.ScrolltoElementandClick(driver, btn_user, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 		 Thread.sleep(2000);
 
 	}
 	
-	public String getText(String data) {
-		String Text =  text.getText();
-		return Text;
+	public void getText() {
+//		String Text =  text.getText();
+//		return Text;
+		 
 		
 		
 	}

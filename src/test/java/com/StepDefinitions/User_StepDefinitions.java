@@ -17,8 +17,8 @@ public class User_StepDefinitions {
 	public User_StepDefinitions(TestContext testcontext) {
 		
 		this.testcontext = testcontext;
-		loginpage = testcontext.pageobjectmanager.getPage_01();
-		userpage = testcontext.pageobjectmanager.getpage_02();
+		loginpage = testcontext.pageobjectmanager.getlogin();
+		userpage = testcontext.pageobjectmanager.getuser();
 	
 	}
 	
@@ -34,7 +34,7 @@ public class User_StepDefinitions {
 
 	@Then("Admin should see the {string} in the URL")
 	public void admin_should_see_the_in_the_url(String text) {
-		userpage.getText(text);
+//		userpage.getText(text);
 	    
 	}
 

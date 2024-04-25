@@ -52,8 +52,8 @@ public class AppHooks {
 			Allure.addAttachment("Failed Scenario Screenshot", new ByteArrayInputStream(screenShot));
 		}
 		LoggerLoad.info("Closing driver from hook's teardown method...");		
-		if(driver!=null)
-		driver.quit();
+//		if(driver!=null)
+//		driver.quit();
 	}
 
 }
