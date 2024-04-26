@@ -9,7 +9,7 @@ public class PageObjectManager {
 	
 		WebDriver driver;
 		private POM_LoginPage loginpage;
-		private POM_UserPage userPage;
+		private POM_UserPage userpage;
 		
 		public PageObjectManager(WebDriver driver)
 		{
@@ -25,11 +25,11 @@ public class PageObjectManager {
 			
 		}
 		public POM_UserPage getuser() {
-			if(userPage==null)
+			if(userpage==null)
 			{
-				userPage = new POM_UserPage(driver);
+				userpage = new POM_UserPage(driver);
 			}
-			return userPage;
+			return userpage;
 		}
 
 }
