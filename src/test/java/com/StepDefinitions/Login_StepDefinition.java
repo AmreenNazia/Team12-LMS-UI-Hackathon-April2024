@@ -1,14 +1,15 @@
 package com.StepDefinitions;
 
+
+
 import org.testng.Assert;
 
 import com.PageObjects.POM_LoginPage;
-import com.PageObjects.credentialResouceBundle;
+import com.Utilities.Constant;
+import com.Utilities.LoggerLoad;
 import com.Utilities.TestContext;
 
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import io.cucumber.java.en.*;
 
 public class Login_StepDefinition {
 
@@ -20,7 +21,8 @@ public class Login_StepDefinition {
 	public Login_StepDefinition(TestContext testcontext) {
 
 		this.testcontext = testcontext;
-		loginpage = testcontext.getpageObjectManager().getLoginPage();
+		loginpage = testcontext.pageobjectmanager.getPage_01();
+
 	}
 
 	@Given("Admin is in login page")
