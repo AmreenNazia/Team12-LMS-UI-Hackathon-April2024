@@ -20,7 +20,7 @@ public class Login_StepDefinition {
 	public Login_StepDefinition(TestContext testcontext) {
 
 		this.testcontext = testcontext;
-		loginpage = testcontext.getpageObjectManager().getlogin();
+		loginpage = testcontext.getpageObjectManager().getLoginPage();
 	}
 
 	@Given("Admin is in login page")
@@ -29,7 +29,7 @@ public class Login_StepDefinition {
 	}
 
 	@When("Admin enter valid credentials  and clicks login button")
-	public void admin_enter_valid_credentials_and_clicks_login_button() throws InterruptedException {
+	public void admin_enter_valid_credentials_and_clicks_login_button() {
 
 		validUserName = com.PageObjects.credentialResouceBundle.getUsername();
 		validPassword = com.PageObjects.credentialResouceBundle.getPassword();
@@ -44,4 +44,3 @@ public class Login_StepDefinition {
 		Assert.assertEquals(loginpage.getDashBoardTitle(), "LMS");
 	}
 }
- 
