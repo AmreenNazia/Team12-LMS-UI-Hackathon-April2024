@@ -53,9 +53,12 @@ Feature: User Page Validation
   Scenario: Validate number of data rows in the data 
   Given Admin is on dashboard page after Login
   When Admin clicks "User" from navigation bar
-  Then Admin should see five records displayed on the data table
+  Then Admin should see two records displayed on the data table
   
-  
+  Scenario: Verify Check box on the data table
+  Given Admin is on dashboard page after Login
+  When Admin clicks "User" from navigation bar
+  Then Each row in the data table should have a checkbox
   
   
   
