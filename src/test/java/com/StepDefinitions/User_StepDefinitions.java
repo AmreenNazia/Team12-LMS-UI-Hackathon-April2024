@@ -103,10 +103,10 @@ public class User_StepDefinitions {
 	 }
 	//**Scenario 10**//
 	@Then("Admin should see five records displayed on the data table")
-	public void admin_should_see_two_records_displayed_on_the_data_table() {
+	public void admin_should_see_two_records_displayed_on_the_data_table() throws InterruptedException {
 	     LoggerLoad.info("Validate number of data rows in the data ");
 	     int rows = userpage.getRows();
-	     Assert.assertTrue(rows>0);
+	     Assert.assertTrue(rows >= 2);
 	}
 
 

@@ -106,7 +106,8 @@ public class POM_UserPage {
 		return student;
 	}
 	
-	 public int getRows() {
+	 public int getRows() throws InterruptedException {
+		 Thread.sleep(3000);
 		 int Rows = rows.size();
 		 System.out.println(Rows);
 		 return Rows;
