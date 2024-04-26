@@ -5,13 +5,13 @@ import org.openqa.selenium.WebDriver;
 import com.PageObjects.POM_LoginPage;
 import com.PageObjects.POM_UserPage;
 
-public class pageObjectManager {
+public class PageObjectManager {
 	
 		WebDriver driver;
 		private POM_LoginPage loginpage;
 		private POM_UserPage userpage;
 		
-		public pageObjectManager(WebDriver driver)
+		public PageObjectManager(WebDriver driver)
 		{
 			this.driver = driver;
 		}

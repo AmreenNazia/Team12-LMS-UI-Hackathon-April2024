@@ -5,19 +5,19 @@ import com.DriverFactory.BaseTest;
 public class TestContext extends BaseTest {
 	
 public BaseTest basetest;
-public pageObjectManager pageobjectmanager;
+public PageObjectManager pageobjectmanager;
 
 public TestContext()
 {
 	basetest = new BaseTest();
-	pageobjectmanager = new pageObjectManager(basetest.getDriver());
+	pageobjectmanager = new PageObjectManager(basetest.getDriver());
 }
 	
 public BaseTest getDrivermanager() {
 	return basetest;
 }
 
-public pageObjectManager getpageObjectManager() {
+public PageObjectManager getpageObjectManager() {
 	return pageobjectmanager;
 }
 }
