@@ -43,5 +43,4 @@ public class POM_LoginPage {
 		String DashboardTitle = driver.getTitle();
 		return DashboardTitle;
 	}
-	
-}
+  }
