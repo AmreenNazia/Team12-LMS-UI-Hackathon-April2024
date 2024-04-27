@@ -44,7 +44,8 @@ public class Login_StepDefinition {
 		Assert.assertEquals(loginpage.getDashBoardTitle(), "LMS");
 	}
 
-/*	@When("Admin enter invalid credentials and clicks login button")
+	// validate login with invalid credential
+	@When("Admin enter invalid credentials and clicks login button")
 	public void admin_enter_invalid_credentials_and_clicks_login_button() {
 
 		String invalidUserName = credentialResouceBundle.getInvalidUsername();
@@ -59,27 +60,51 @@ public class Login_StepDefinition {
 		Assert.assertEquals(loginpage.getErrorMessage(), "Invalid username and password Please try again");
 	}
 
-/*	@When("Admin enter value only in password and clicks login button")
+   //validate with only password
+	@When("Admin enter value only in password and clicks login button")
 	public void admin_enter_value_only_in_password_and_clicks_login_button() {
-		loginpage.nullUser(validPassword);
+
+		validPassword = com.PageObjects.credentialResouceBundle.getPassword();
+		loginpage.enterPassword(validPassword);
+		System.out.println("*****:" + validPassword);
 		loginpage.login();
 	}
 
+	@Then("Error message please enter username should displayed")
+	public void error_message_please_enter_username_should_displayed() {
+
+		Assert.assertEquals(loginpage.getuserErrorMessage(), "Please enter your user name");
+	}
+
+   //validate with only login
 	@When("Admin enter value only in username and clicks login button")
 	public void admin_enter_value_only_in_username_and_clicks_login_button() {
-		loginpage.nullPassword(validUserName);
+
+		validUserName = com.PageObjects.credentialResouceBundle.getUsername();
+		loginpage.enterUser(validUserName);
 		loginpage.login();
 	}
 
-	@When("Admin enter valid credentials and clicks login button through keyboard")
-	public void admin_enter_valid_credentials_and_clicks_login_button_through_keyboard() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+	@Then("Error message please enter password should displayed")
+	public void error_message_please_enter_password_should_displayed() {
+
+		Assert.assertEquals(loginpage.getPswdErrorMessage(), "Please enter your password");
 	}
 
+	// login keyboard click
+	@When("Admin enter valid credentials and clicks login button through keyboard")
+	public void admin_enter_valid_credentials_and_clicks_login_button_through_keyboard() {
+
+		loginpage.entervalidCredentials(validUserName, validPassword);
+		loginpage.keyboardAction();
+	}
+
+    //login mouse click
 	@When("Admin enter valid credentials  and clicks login button through mouse")
 	public void admin_enter_valid_credentials_and_clicks_login_button_through_mouse() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}*/
+
+		loginpage.entervalidCredentials(validUserName, validPassword);
+		loginpage.mouseAction();
+	}
+
 }
