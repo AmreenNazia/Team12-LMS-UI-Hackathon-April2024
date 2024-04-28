@@ -9,5 +9,6 @@ public class POM_HomePage {
 	public POM_HomePage(WebDriver driver)
 	{
 		this.driver = driver;
+		PageFactory.initElements(driver, this);
 	}
 }
