@@ -49,9 +49,7 @@
 			<artifactId>selenium-java</artifactId>
 			<version>4.19.1</version>
 		</dependency>
-<properties>
-    <java.version>8</java.version>
-</properties>
+ 
 		<!--
 		https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
 		<dependency>
