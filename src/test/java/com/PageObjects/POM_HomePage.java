@@ -10,9 +10,4 @@ public class POM_HomePage {
 	{
 		this.driver = driver;
 	}
-	
-//	public void getHomepage() {
-//		
-//	}
-
 }
