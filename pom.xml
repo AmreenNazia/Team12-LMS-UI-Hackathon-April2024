@@ -22,7 +22,7 @@
 					<fork>true</fork>
 					<executable><!-- path-to-javac -->
 					</executable>
-					<compilerVersion>1.3</compilerVersion>
+					<compilerVersion>1.8</compilerVersion>
 				</configuration>
 			</plugin>
 			<plugin>
