@@ -16,35 +16,35 @@ import com.Utilities.LoggerLoad;
 
 public class POM_UserEditPage {
 WebDriver driver;
-	
+
 	public POM_UserEditPage(WebDriver driver)
 	{
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-	
+
 	@FindBy(xpath =  "//button[@id='user']")
 	WebElement btn_user;
-	
+
 	@FindBy(xpath = "//div[@class='box']/text()")
 	WebElement text;
-	
+
 	@FindBy(xpath="//button[@id='user']//span")
 	WebElement user;
-	
+
 	@FindBy(xpath = "/html/body/app-root/app-user/div/mat-card/mat-card-content/p-table/div/div[1]/table/tbody/tr[1]/td[6]/div/span/button[1]/span[1]")
 	WebElement edit_btn;
-	
+
 	@FindBy(xpath = "/html/body/app-root/app-user/div/mat-card/mat-card-title/div[1]")
 	WebElement manageUserTitle;
-	
+
 	@FindBy(xpath = "//*[contains(@class, 'p-dialog-title ng-tns-c132-6 ng-star-inserted')]")
 	WebElement editUserTitle;
 
 	@FindBy(xpath = "//*[@id=\"filterGlobal\"]")
 	WebElement searchTextBox;
-	
-	
+
+
 	@FindBy(xpath = "//input[@formcontrolname='userFirstName']")
 	WebElement firstName;
 	@FindBy(xpath = "//input[@formcontrolname='userMiddleName']")
@@ -57,7 +57,7 @@ WebDriver driver;
 	WebElement location;
 	@FindBy(xpath = "//input[@formcontrolname='userLoginEmail']")
 	WebElement email;
-	
+
 	@FindBy(xpath = "//input[@formcontrolname='userLinkedinUrl']")
 	WebElement linkedInURL;
 	@FindBy(xpath = "//*[@id=\"roleId\"]")
@@ -74,9 +74,9 @@ WebDriver driver;
 	WebElement timezone;
 	@FindBy(xpath = "//input[@formcontrolname='userComments']")
 	WebElement userComments;
-	
-	
-	
+
+
+
 	//success msg
 	@FindBy(xpath = "//p-toastitem/div/div/div/div[2]")
 	WebElement detailedMsg;
@@ -84,15 +84,15 @@ WebDriver driver;
 //error msg
 	@FindBy(xpath = "//p-toastitem/div/div/div/div[1]")
 	WebElement headerMsg;
-	
-	
+
+
 	@FindBy(xpath = "/html/body/app-root/app-user/div/p-dialog[1]/div/div/div[2]/form/mat-card/mat-card-actions/button[2]/span[1]")
 	WebElement submit;
 	@FindBy(xpath = "/html/body/app-root/app-user/div/p-dialog[1]/div/div/div[2]/form/mat-card/mat-card-actions/button[1]")
 	WebElement cancel;
 	@FindBy(xpath = "/html/body/app-root/app-user/div/p-dialog[1]/div/div/div[1]/div/button")
 	WebElement closeButton;
-	
+
 	@FindBy(xpath = "/html/body/app-root/app-user/div/mat-card/mat-card-content/p-table/div/div[1]/table/tbody/tr/td[3]")
 	WebElement tableFullName;
 
@@ -101,22 +101,22 @@ WebDriver driver;
 
 	@FindBy(xpath = "/html/body/app-root/app-user/div/mat-card/mat-card-content/p-table/div/div[1]/table/tbody/tr/td[5]")
 	WebElement tablePhoneNumber;
-	
+
 	@FindBy(xpath = "/html/body/app-root/app-user/div/mat-card/mat-card-content/p-table/div/div[1]/table/thead/tr/th[2]")
 	WebElement idSort;
-	
+
 	@FindBy(xpath = "/html/body/app-root/app-user/div/mat-card/mat-card-content/p-table/div/div[1]/table/thead/tr/th[3]")
 	WebElement nameSort;
-	
+
 	@FindBy(xpath = "/html/body/app-root/app-user/div/mat-card/mat-card-content/p-table/div/div[1]/table/thead/tr/th[4]")
 	WebElement locationSort;
-	
+
 	@FindBy(xpath = "/html/body/app-root/app-user/div/mat-card/mat-card-content/p-table/div/div[1]/table/thead/tr/th[5]")
 	WebElement phoneNumberSort;
-	
-	
-	
-	
+
+
+
+
 	public void click_User(String User)  {
 		 ElementsUtil.ScrolltoElementandClick(driver, btn_user, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 		 try {
@@ -127,11 +127,11 @@ WebDriver driver;
 
 	}
 
-  
+
 	public void waitForManageUserPage() {
 		ElementsUtil.waitForElementVisibility(driver, manageUserTitle, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 	}
-	
+
 	public void clickEditButton() {
 		ElementsUtil.ScrolltoElementandClick(driver, edit_btn, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 		try {
@@ -146,7 +146,7 @@ WebDriver driver;
 		ElementsUtil.waitForElementVisibility(driver, editUserTitle, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 		Assert.assertEquals(editUserTitle.getText(), "User Details");
 	}
-	
+
 	public void searchInput(String text)  {
 		ElementsUtil.typeInputIntoElement(driver, searchTextBox, text, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 		try {
@@ -156,7 +156,7 @@ WebDriver driver;
 		}
 	}
 
-	
+
 	public void modifyUser(String fieldName, InputValueType type) {
 		Pair<WebElement, String> fieldElmentAndValue;
 		try {
@@ -171,7 +171,7 @@ WebDriver driver;
 				Thread.sleep(1000);
 				WebElement option = element.findElement(By.xpath("//li[@aria-label='"+value+"']"));
 				option.click();
-				
+
 			}
 			LoggerLoad.info("Updated field name:  "+ fieldName  +" with value as: "+ value);
 			//To handle the email bug.
@@ -234,7 +234,7 @@ WebDriver driver;
 		case "postGraduate":
 			element = postGraudate;
 			value = com.PageObjects.credentialResouceBundle.getPostGraduateByType(valueType);
-			break;	
+			break;
 		case "timezone":
 			element = timezone;
 			value = com.PageObjects.credentialResouceBundle.getTimeZoneByType(valueType);
@@ -255,28 +255,28 @@ WebDriver driver;
 		ElementsUtil.ScrolltoElementandClick(driver, submit, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 		LoggerLoad.info("Clicked submit on the edit window...");
 	}
-	
-	
+
+
 	public void clickCancelOnEditWindow() {
 		ElementsUtil.ScrolltoElementandClick(driver, cancel, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 		LoggerLoad.info("Clicked cancel on the edit window popup...");
 	}
-	
+
 	public void clickCloseButtonOnEditWindow() {
 		ElementsUtil.ScrolltoElementandClick(driver, closeButton, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 		LoggerLoad.info("Closed the edit window popup...");
 	}
 
 	public void checkDetailedMsg(String msg) {
-		ElementsUtil.waitForElementVisibility(driver, detailedMsg, Constant.EXPLICIT_ELEMENT_WAIT_TIME);	
+		ElementsUtil.waitForElementVisibility(driver, detailedMsg, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 		Assert.assertEquals(detailedMsg.getText(), msg);
 	}
-	
+
 	public void checkHeaderMsg(String msg) {
-		ElementsUtil.waitForElementVisibility(driver, headerMsg, Constant.EXPLICIT_ELEMENT_WAIT_TIME);	
+		ElementsUtil.waitForElementVisibility(driver, headerMsg, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 		Assert.assertEquals(headerMsg.getText(), msg);
 	}
-	
+
 	public void verifyModifiedValue(String fieldName, InputValueType type) {
 		try {
 			Pair<WebElement, String> fieldElementValuePair = getFieldElementAndValueByName(fieldName, type);
@@ -286,23 +286,23 @@ WebDriver driver;
 			if(tagName.equalsIgnoreCase("input")) {
 				String attr = element.getAttribute("value");
 				if(type == InputValueType.VALID) {
-					Assert.assertEquals(attr, value);	
+					Assert.assertEquals(attr, value);
 				} else if(type == InputValueType.CANCNEL_INPUT) {
 					Assert.assertNotEquals(attr, value);
 				}
-				
+
 			} else if (tagName.equalsIgnoreCase("p-dropdown")) {
 				String selectedVal = element.getText();
 				Assert.assertEquals(selectedVal, value);
 			}
-			
-			
+
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
-	
+
+
+
+
 }
