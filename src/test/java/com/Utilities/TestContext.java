@@ -22,3 +22,4 @@ public PageObjectManager getpageObjectManager() {
 	return pageobjectmanager;
 }
 }
+

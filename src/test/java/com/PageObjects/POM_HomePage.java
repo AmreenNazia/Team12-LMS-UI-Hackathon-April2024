@@ -1,4 +1,4 @@
-Opackage com.PageObjects;
+package com.PageObjects;
 
 import org.openqa.selenium.WebDriver;
 
@@ -9,10 +9,6 @@ public class POM_HomePage {
 	public POM_HomePage(WebDriver driver)
 	{
 		this.driver = driver;
+		PageFactory.initElements(driver, this);
 	}
-	
-//	public void getHomepage() {
-//		
-//	}
-
 }
