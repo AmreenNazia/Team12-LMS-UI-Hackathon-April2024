@@ -180,7 +180,7 @@ public class POM_UserPage {
 	private WebElement radioBtn_active;
 	@FindBy(xpath = "/html/body/app-root/app-user/div/p-dialog[2]/div/div/div[2]/form/div[2]/div")
 	private WebElement error_studentemailid;
-	@FindBy(xpath = "//*[@id=\"userId\"]/div/span")
+	@FindBy(id="userId")
 	private WebElement staffemailId;
 	@FindBy(xpath = "//p-dropdown//li")
 	private List<WebElement> listofEmailid;
@@ -545,6 +545,7 @@ public class POM_UserPage {
 	}
 
 	public void searchfortheuser() throws InterruptedException {
+		Thread.sleep(2000);
 		boolean ispageexists = false;
 		boolean isUserexists = false;
 		while (!isUserexists) {
@@ -657,8 +658,8 @@ public class POM_UserPage {
 	public void fillwithoutSkill(String emailid, String programName, String batchname) throws InterruptedException {
 		Actions action = new Actions(driver);
 		Thread.sleep(1000);
-//		ElementsUtil.waitForElementVisibility(driver, staffemailId, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
-		ElementsUtil.ScrolltoElementandClick(driver, staffemailId, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.waitForElementVisibility(driver, staffemailId, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+//		ElementsUtil.ScrolltoElementandClick(driver, staffemailId, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 		ElementsUtil.typeInputIntoElement(driver, staffemailId, emailid, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 		for (WebElement e : listofEmailid) {
 			if (e.getText().contains(emailid))
