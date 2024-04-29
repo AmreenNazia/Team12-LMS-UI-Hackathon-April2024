@@ -53,7 +53,8 @@
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-testng</artifactId>
 			<version>7.15.0</version>
- 
+ 		</dependency>
+ 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
 			<version>7.9.0</version>
@@ -85,7 +86,8 @@
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi-ooxml</artifactId>
 			<version>5.2.2</version>
- 
+ 		</dependency>
+ 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
 			<version>2.23.0</version>
@@ -127,7 +129,7 @@
 			<groupId>com.aventstack</groupId>
 			<artifactId>extentreports</artifactId>
 			<version>5.1.1</version>
- 
+ 		</dependency>
 		 
 
 		 
@@ -154,8 +156,7 @@
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>2.15.1</version>
- 
-  
+  		</dependency>
 
 	</dependencies>
 </project>

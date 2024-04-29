@@ -27,7 +27,7 @@ public class User_StepDefinitions {
 	public User_StepDefinitions(TestContext testcontext) {
 
 		this.testcontext = testcontext;
-		loginpage = testcontext.pageobjectmanager.getlogin();
+		loginpage = testcontext.pageobjectmanager.getLoginPage();
 		userpage = testcontext.pageobjectmanager.getuser();
 
 	}
