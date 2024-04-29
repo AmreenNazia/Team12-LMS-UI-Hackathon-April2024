@@ -22,5 +22,14 @@ public class pageObjectManager {
 		return loginpage;
 		
 	}
+public POM_UserPage getuser() {
+			if(userpage==null)
+			{
+				userpage = new POM_UserPage(driver);
+			}
+			return userpage;
+		}
+
+
 
 }
