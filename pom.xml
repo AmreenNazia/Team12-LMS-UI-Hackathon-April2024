@@ -5,14 +5,14 @@
 	<groupId>Team12_XpathWarriors_LMS_UI_Apr2024</groupId>
 	<artifactId>Team12_XpathWarriors_LMS_UI_Apr2024</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	
+
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.13.0</version>
-				
+
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -23,18 +23,13 @@
 						<include>**/Test*.java</include>
 					</includes>
 					<properties>
-					<parallel>methods</parallel>
-					<useUnlimitedThreads>true</useUnlimitedThreads>
-					<threadCount>7</threadCount> 
+						<parallel>methods</parallel>
+						<useUnlimitedThreads>true</useUnlimitedThreads>
+						<threadCount>7</threadCount>
 					</properties>
 					<suiteXmlFiles>
-						<suiteXmlFile>testngLMS.xml</suiteXmlFile>
+						<suiteXmlFile>testng.xml</suiteXmlFile>
 					</suiteXmlFiles>
-				<!--	<properties>
-						<dataproviderthreadcount> 20 </dataproviderthreadcount>
-						<parallel> tests </parallel>
-						<threadcount> 5 </threadcount>
-					</properties>-->
 				</configuration>
 			</plugin>
 		</plugins>
@@ -72,7 +67,7 @@
 			<version>7.15.0</version>
 		</dependency>
 
-		 
+
 		<!--
 		https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
 		<dependency>
@@ -130,14 +125,14 @@
 			<artifactId>cucumber-java</artifactId>
 			<version>7.15.0</version>
 		</dependency>
-	
+
 		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-testng</artifactId>
 			<version>7.15.0</version>
 		</dependency>
-		
+
 
 		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
 		<dependency>
@@ -164,9 +159,6 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>3.14.0</version>
 		</dependency>
-		
-	
-
 
 
 	</dependencies>
