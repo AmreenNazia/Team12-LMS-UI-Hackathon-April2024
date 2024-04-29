@@ -29,21 +29,21 @@ public class credentialResouceBundle {
     public static String getInvalidPassword() {
         return rb.getString("invalidPassword");
     }
-    
+
     public static String getTestUserName() {
     	return rb.getString("testuser");
     }
-    
+
     public static String getFirstNameByType(InputValueType type) {
     	if(type == InputValueType.INVALID) {
         	return rb.getString("invalidFirstName");
     	}else if(type == InputValueType.SPECIALCHAR_NUM) {
     		return rb.getString("specialCharNumFirstName");
     	}
-    		
+
     	return rb.getString("validFirstName");
     }
-    
+
     public static String getMiddleNameByType(InputValueType type) {
     	if(type == InputValueType.INVALID) {
         	return rb.getString("invalidMiddleName");
@@ -52,7 +52,7 @@ public class credentialResouceBundle {
     	}
     	return rb.getString("validMiddleName");
     }
-    
+
     public static String getLastNameByType(InputValueType type) {
     	if(type == InputValueType.INVALID) {
         	return rb.getString("invalidLastName");
@@ -63,7 +63,7 @@ public class credentialResouceBundle {
     	}
     	return rb.getString("validLastName");
     }
-    
+
     public static String getLocationByType(InputValueType type) {
     	if(type == InputValueType.INVALID) {
         	return rb.getString("invalidLocation");
@@ -79,10 +79,10 @@ public class credentialResouceBundle {
     	}else if(type == InputValueType.SPECIALCHAR_NUM) {
     		return rb.getString("specialCharNumPhoneNumber");
     	}
-    	
+
     	return rb.getString("validPhoneNumber");
     }
-    
+
     public static String getEmailByType(InputValueType type) {
     	if(type == InputValueType.INVALID) {
         	return rb.getString("invalidEmail");
@@ -91,7 +91,7 @@ public class credentialResouceBundle {
     	}
     	return rb.getString("validEmail");
     }
-    
+
     public static String getInvalidLinkedInURL(InputValueType type) {
     	if(type == InputValueType.INVALID) {
         	return rb.getString("invalidLinkedInURL");
@@ -100,7 +100,7 @@ public class credentialResouceBundle {
     	}
     	return rb.getString("validLinkedInURL");
     }
-    
+
     public static String getUnderGraduateByType(InputValueType type) {
     	if(type == InputValueType.INVALID) {
         	return rb.getString("invalidUnderGraduate");
@@ -109,7 +109,7 @@ public class credentialResouceBundle {
     	}
     	return rb.getString("validUnderGraduate");
     }
-    
+
     public static String getPostGraduateByType(InputValueType type) {
     	if(type == InputValueType.INVALID) {
         	return rb.getString("invalidPostGraduate");
@@ -118,7 +118,7 @@ public class credentialResouceBundle {
     	}
     	return rb.getString("validPostGraduate");
     }
-    
+
     public static String getTimeZoneByType(InputValueType type) {
     	if(type == InputValueType.INVALID) {
         	return rb.getString("invalidTimezone");
@@ -127,7 +127,7 @@ public class credentialResouceBundle {
     	}
     	return rb.getString("validTimezone");
     }
-   
+
 
 	public static String getUserRoleByType(InputValueType type) {
 		return rb.getString("validUserRole");
@@ -138,7 +138,7 @@ public class credentialResouceBundle {
 	public static String getVisaStatusByType(InputValueType type) {
 		return rb.getString("validUserVisaStatus");
 	}
-	
+
 	public static String getUserCommentsByType(InputValueType type) {
 	 if(type == InputValueType.SPECIALCHAR_NUM) {
     		return rb.getString("specialCharNumUserComments");
@@ -146,10 +146,10 @@ public class credentialResouceBundle {
 		return rb.getString("validUserComments");
 	}
 
- 
-	
-	
-	
+
+
+
+
 
 
 }

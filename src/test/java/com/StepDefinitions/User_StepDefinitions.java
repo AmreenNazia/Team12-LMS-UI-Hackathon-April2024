@@ -18,13 +18,13 @@ public class User_StepDefinitions {
 	POM_LoginPage loginpage;
 
 	public User_StepDefinitions(TestContext testcontext) {
-		
+
 		this.testcontext = testcontext;
 		loginpage = testcontext.pageobjectmanager.getLoginPage();
 		userpage = testcontext.pageobjectmanager.getUserPage();
-	
+
 	}
-	
+
 	@Given("Admin is on dashboard page after Login")
 	public void admin_is_on_dashboard_page_after_login() {
 		  Assert.assertEquals(loginpage.getDashBoardTitle(),Constant.HOME_PAGE_TITLE);
@@ -33,7 +33,7 @@ public class User_StepDefinitions {
 	@When("Admin clicks {string} from navigation bar")
 	public void admin_clicks_from_navigation_bar(String text) throws InterruptedException {
 	    userpage.click_User(text);
-	    
+
 	}
 
 	@Then("Admin should see the {string} in the URL")
@@ -41,11 +41,11 @@ public class User_StepDefinitions {
 		LoggerLoad.info("Validate landing in User page");
 		String url = userpage.getUrl();
 		Assert.assertTrue(url.contains(text));
-	    
+
 	}
-	
+
 	//**Scenario 2**//
-	
+
 	@Then("Admin should see a heading with text {string} on the page")
 	public void admin_should_see_a_heading_with_text_on_the_page(String text) {
 		LoggerLoad.info("Validate the heading");

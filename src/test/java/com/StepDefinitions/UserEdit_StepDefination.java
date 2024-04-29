@@ -9,19 +9,19 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class UserEdit_StepDefination {
-	
+
 	TestContext testcontext;
 	POM_UserEditPage userEditPage;
 	String testUserName = com.PageObjects.credentialResouceBundle.getTestUserName();
 
-	
-	
+
+
 	public UserEdit_StepDefination(TestContext testcontext) {
 		this.testcontext = testcontext;
 		userEditPage = testcontext.getPageObjectManager().getUserEditPage();
 	}
-	
-	
+
+
 	@Then("Admin clicks User on the navigation bar")
 	public void admin_clicks_user_on_the_navigation_bar()  {
 	   userEditPage.click_User("User");
@@ -49,7 +49,7 @@ public class UserEdit_StepDefination {
 	    userEditPage.clickEditButton();
 	}
 
-	
+
 	@When("Update the field {string} with valid data and click submit")
 	public void update_the_field_with_valid_data_and_click_submit(String fieldName) {
 	    userEditPage.modifyUser(fieldName, InputValueType.VALID);
@@ -60,14 +60,14 @@ public class UserEdit_StepDefination {
 	public void admin_gets_message(String msg) {
 	   userEditPage.checkDetailedMsg(msg);
 	}
-	
+
 	@Then("verify the updated value for field {string} in edit page")
 	public void verify_the_updated_value_for_field_in_edit_page(String fieldName) {
 		userEditPage.clickEditButton();
 		userEditPage.verifyModifiedValue(fieldName, InputValueType.VALID);
 		userEditPage.clickCloseButtonOnEditWindow();
 	}
-	
+
 
 	@When("Update the field {string} with invalid values and click submit")
 	public void update_the_field_with_invalid_values_and_click_submit(String fieldName) {

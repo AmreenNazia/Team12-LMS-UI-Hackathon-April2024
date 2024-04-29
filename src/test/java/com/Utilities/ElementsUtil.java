@@ -64,7 +64,7 @@ public class ElementsUtil {
 					+ ". Exception is: " + e.getMessage());
 		}
 	}
-	
+
 	public static void sendInput(WebDriver driver, WebElement element, String textToBeTyped,
 			long durationInSeconds) {
 		try {
@@ -77,5 +77,5 @@ public class ElementsUtil {
 		}
 	}
 
-	
+
 }
