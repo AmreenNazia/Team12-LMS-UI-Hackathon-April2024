@@ -102,6 +102,20 @@ WebDriver driver;
 	@FindBy(xpath = "/html/body/app-root/app-user/div/mat-card/mat-card-content/p-table/div/div[1]/table/tbody/tr/td[5]")
 	WebElement tablePhoneNumber;
 	
+	@FindBy(xpath = "/html/body/app-root/app-user/div/mat-card/mat-card-content/p-table/div/div[1]/table/thead/tr/th[2]")
+	WebElement idSort;
+	
+	@FindBy(xpath = "/html/body/app-root/app-user/div/mat-card/mat-card-content/p-table/div/div[1]/table/thead/tr/th[3]")
+	WebElement nameSort;
+	
+	@FindBy(xpath = "/html/body/app-root/app-user/div/mat-card/mat-card-content/p-table/div/div[1]/table/thead/tr/th[4]")
+	WebElement locationSort;
+	
+	@FindBy(xpath = "/html/body/app-root/app-user/div/mat-card/mat-card-content/p-table/div/div[1]/table/thead/tr/th[5]")
+	WebElement phoneNumberSort;
+	
+	
+	
 	
 	public void click_User(String User)  {
 		 ElementsUtil.ScrolltoElementandClick(driver, btn_user, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
