@@ -14,8 +14,12 @@ public class credentialResouceBundle {
 	public static String getURL() {
 		return rb.getString("url");
 	}
-
-	public static String getUsername() {
+ 
+	public static String getInvalidURL() {
+		return rb.getString("InvalidUrl");
+	}
+	
+ public static String getUsername() {
         return rb.getString("user");
     }
 
