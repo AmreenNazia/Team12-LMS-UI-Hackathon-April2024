@@ -5,11 +5,11 @@ package com.StepDefinitions;
 import org.testng.Assert;
 
 import com.PageObjects.POM_LoginPage;
-import com.Utilities.Constant;
-import com.Utilities.LoggerLoad;
 import com.Utilities.TestContext;
 
-import io.cucumber.java.en.*;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 public class Login_StepDefinition {
 
@@ -21,7 +21,7 @@ public class Login_StepDefinition {
 	public Login_StepDefinition(TestContext testcontext) {
 
 		this.testcontext = testcontext;
-		loginpage = testcontext.pageobjectmanager.getPage_01();
+		loginpage = testcontext.pageobjectmanager.getLoginPage();
 
 	}
 

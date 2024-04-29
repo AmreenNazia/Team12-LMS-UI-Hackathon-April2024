@@ -9,7 +9,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 import com.DriverFactory.BaseTest;
- 
+
 import com.Utilities.Constant;
 import com.Utilities.LoggerLoad;
 
@@ -17,14 +17,14 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.qameta.allure.Allure;
- 
+
 public class AppHooks {
 
 	private WebDriver driver;
 	private BaseTest basefactory;
 	private Properties prop;
 
- 
+
 	@Before
 	public void setUp() {
 		String browseName = com.PageObjects.credentialResouceBundle.getBrowser();
@@ -39,7 +39,6 @@ public class AppHooks {
 
 	@After
 	public void tearDown(Scenario scenario) {
- 
 		if(driver!=null && scenario.isFailed())
 		{
 			byte[] screenShot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
@@ -51,7 +50,7 @@ public class AppHooks {
 		driver.quit();
 	}
 
- 
+
 
 	// @AfterStep
 	// public void AddScreenshot(Scenario scenario) throws IOException {
