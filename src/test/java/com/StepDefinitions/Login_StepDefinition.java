@@ -1,9 +1,10 @@
 package com.StepDefinitions;
 
+
+
 import org.testng.Assert;
 
 import com.PageObjects.POM_LoginPage;
-import com.PageObjects.credentialResouceBundle;
 import com.Utilities.TestContext;
 
 import io.cucumber.java.en.Given;
@@ -20,7 +21,8 @@ public class Login_StepDefinition {
 	public Login_StepDefinition(TestContext testcontext) {
 
 		this.testcontext = testcontext;
-		loginpage = testcontext.getpageObjectManager().getLoginPage();
+		loginpage = testcontext.pageobjectmanager.getLoginPage();
+
 	}
 
 	@Given("Admin is in login page")
@@ -43,6 +45,7 @@ public class Login_StepDefinition {
 
 		Assert.assertEquals(loginpage.getDashBoardTitle(), "LMS");
 	}
+ 
 
 	// validate login with invalid credential
 	@When("Admin enter invalid credentials and clicks login button")
@@ -107,4 +110,5 @@ public class Login_StepDefinition {
 		loginpage.mouseAction();
 	}
 
+ 
 }
