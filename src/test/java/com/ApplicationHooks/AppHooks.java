@@ -38,8 +38,7 @@ public class AppHooks {
 	}
 
 	@After
-	public void tearDown(Scenario scenario) {
- 
+	public void tearDown(Scenario scenario) throws InterruptedException {
 		if(driver!=null && scenario.isFailed())
 		{
 			byte[] screenShot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);

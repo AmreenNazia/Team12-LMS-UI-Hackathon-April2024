@@ -10,7 +10,6 @@ import org.testng.Assert;
 
 import com.Utilities.Constant;
 import com.Utilities.ElementsUtil;
-import com.Utilities.LoggerLoad;
 
 public class POM_UserPage {
 	WebDriver driver;

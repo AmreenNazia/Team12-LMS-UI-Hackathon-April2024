@@ -1,6 +1,7 @@
 package com.Utilities;
 
 import java.time.Duration;
+import java.util.Set;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -36,7 +37,6 @@ public class ElementsUtil {
 		}
 
 	}
-	 
 
 	public static WebElement waitForElementClickablity(WebDriver driver, WebElement element, long durationInSeconds) {
 
@@ -64,4 +64,18 @@ public class ElementsUtil {
 					+ ". Exception is: " + e.getMessage());
 		}
 	}
+	
+	public static void sendInput(WebDriver driver, WebElement element, String textToBeTyped,
+			long durationInSeconds) {
+		try {
+			element.clear();
+			element.click();
+			element.sendKeys(textToBeTyped);
+		} catch (Exception e) {
+			LoggerLoad.error("typeInputIntoElement()::Not able to send text in " + element.toString()
+					+ ". Exception is: " + e.getMessage());
+		}
+	}
+
+	
 }

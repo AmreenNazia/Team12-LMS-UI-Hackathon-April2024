@@ -1,4 +1,4 @@
-package com.StepDefinitions;
+ package com.StepDefinitions;
 
 import org.testng.Assert;
 
@@ -8,7 +8,9 @@ import com.Utilities.Constant;
 import com.Utilities.LoggerLoad;
 import com.Utilities.TestContext;
 
-import io.cucumber.java.en.*;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 public class User_StepDefinitions {
 	TestContext testcontext;
@@ -18,8 +20,8 @@ public class User_StepDefinitions {
 	public User_StepDefinitions(TestContext testcontext) {
 		
 		this.testcontext = testcontext;
-		loginpage = testcontext.pageobjectmanager.getlogin();
-		userpage = testcontext.pageobjectmanager.getuser();
+		loginpage = testcontext.pageobjectmanager.getLoginPage();
+		userpage = testcontext.pageobjectmanager.getUserPage();
 	
 	}
 	

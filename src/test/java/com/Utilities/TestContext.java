@@ -17,7 +17,7 @@ public BaseTest getDrivermanager() {
 	return basetest;
 }
 
-public PageObjectManager getpageObjectManager() {
+public PageObjectManager getPageObjectManager() {
 	return pageobjectmanager;
 }
 }
