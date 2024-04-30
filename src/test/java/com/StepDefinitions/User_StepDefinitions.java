@@ -182,9 +182,11 @@ public class User_StepDefinitions {
 
 	}
 
+ 
 	// --------------------------------Add New User----------------------------------------//
 
 
+ 
 
 	// Scenario 01**//Given - scenario - 14//
 	@When("Admin clicks {string} button")
@@ -389,7 +391,7 @@ public class User_StepDefinitions {
 		LoggerLoad.info("Validate Cancel button on User Details form");
 		Assert.assertEquals(userpage.getManageuser(), Constant.MANAGE_USERPAGE_HEADER);
 	}
-//Scenario 11**//
+	// Scenario 11**//
 
 	@Then("The newly added user should be present in the data table in Manage User page")
 	public void the_newly_added_should_be_present_in_the_data_table_in_manage_user_page() throws InterruptedException {
@@ -400,8 +402,7 @@ public class User_StepDefinitions {
 
 	// *****************************Assign Staff Scenario 01*********************//
 
-
-
+ 
 	@Given("Admin is in manage user page")
 	public void admin_is_in_manage_user_page() {
 		userpage.click_User();
@@ -415,24 +416,28 @@ public class User_StepDefinitions {
 
 	@Then("Admin should see a pop up open for assign staff details in the window")
 	public void admin_should_see_a_pop_up_open_for_assign_staff_details_in_the_window() {
+		LoggerLoad.info("Validate Assign Staff Popup window");
 		userpage.assignstaff_form();
 	}
 
 	// Scenario 02 **//
 	@Then("Admin should see User Role as R02,and other fields")
 	public void admin_should_see_user_role_as_r02_and_other_fields() {
+		LoggerLoad.info("Validate input fields and their text boxes in Assign Student form");
 		userpage.validating_assignstaf_Form();
 	}
 
 	// Scenario 03**//
 	@Then("Admin should see drop down boxes with valid datas for Student Email id,Program Name and Batch Name")
 	public void admin_should_see_drop_down_boxes_with_valid_datas_for_student_email_id_program_name_and_batch_name() {
+		LoggerLoad.info("Validate Dropdown in Assign Staff Form");
 		userpage.validatingDropDown();
 	}
 
 	// Scenario 04**//
 	@Then("Admin should see two radio button for Status")
 	public void admin_should_see_two_radio_button_for_status() {
+		LoggerLoad.info("Validate radio button in Assign Staff Form");
 		userpage.validating_radioButtons();
 	}
 
@@ -450,10 +455,11 @@ public class User_StepDefinitions {
 
 	@Then("Admin gets a Error message alert")
 	public void admin_gets_a_error_message_alert() {
+		LoggerLoad.info(" Empty Form Submission");
 		Assert.assertTrue(userpage.errorMessage_displayed().isDisplayed());
 	}
 
-//Scenario 06**//
+	// Scenario 06**//
 
 	@When("Admin clicks Save button with entering any data using sheetname {string} and rowNumber {int}")
 	public void admin_clicks_save_button_with_entering_any_data_using_sheetname_and_row_number(String sheetName,
@@ -470,8 +476,9 @@ public class User_StepDefinitions {
 	}
 
 	@Then("Admin gets a Error message alert as {string}")
-	public void admin_gets_a_error_message_alert_as(String studentemail) {
-		Assert.assertEquals(userpage.Error_Studentemail().getText(), studentemail);
+	public void admin_gets_a_error_message_alert_as(String skillRequired) throws InterruptedException {
+		LoggerLoad.info("Validate the Assign Staff form page without giving Student Email id");
+		userpage.validate_SkillerrorMessage(skillRequired);
 	}
 
 	// Scenario 07**//
@@ -490,8 +497,101 @@ public class User_StepDefinitions {
 	}
 
 	@Then("Admin gets a Error message alert {string}")
-	public void admin_gets_a_error_message_alert(String skillisRequired) {
+	public void admin_gets_a_error_message_alert(String skillisRequired) throws InterruptedException {
+		LoggerLoad.info("Validate the Assign Staff form page ");
 		userpage.validate_SkillerrorMessage(skillisRequired);
+	}
+
+	// Scenario 09**//
+	@When("Admin clicks Save button without selecting program using sheetname {string} and rowNumber {int}")
+	public void admin_clicks_save_button_without_selecting_program_using_sheetname_and_row_number(String sheetName,
+			Integer RowNumber) throws InvalidFormatException, IOException, InterruptedException {
+		ExcelReader reader = new ExcelReader();
+
+		List<Map<String, String>> testdata = reader.getData("/Users/amreennaziasyed/eclipse-workspace/DSALGO/Team12_XpathWarriors_LMS_UI_Apr2024/src/test/resources/TestData/Team12-TestData-LMS-UI-Hackathon-April2024.xlsx",
+				sheetName);
+		String emailid = testdata.get(RowNumber).get("Staff Email Id");
+		String skill = testdata.get(RowNumber).get("Skill");
+		String batchname = testdata.get(RowNumber).get("Batch Name");
+		userpage.fillwithoutprogram(emailid, skill, batchname);
+	}
+
+	// Scenario 10**//
+	@When("Admin clicks Save button without selecting batch using sheetname {string} and rowNumber {int}")
+	public void admin_clicks_save_button_without_selecting_batch_using_sheetname_and_row_number(String sheetName,
+			Integer RowNumber) throws InvalidFormatException, IOException, InterruptedException {
+		ExcelReader reader = new ExcelReader();
+
+		List<Map<String, String>> testdata = reader.getData(
+				"/Users/amreennaziasyed/eclipse-workspace/DSALGO/Team12_XpathWarriors_LMS_UI_Apr2024/src/test/resources/TestData/Team12-TestData-LMS-UI-Hackathon-April2024.xlsx",
+				sheetName);
+		String emailid = testdata.get(RowNumber).get("Staff Email Id");
+		String skill = testdata.get(RowNumber).get("Skill");
+		String programname = testdata.get(RowNumber).get("Program Name");
+		userpage.fillwithoutbatch(emailid, skill, programname);
+	}
+
+	// Scenario 11**//
+	@When("Admin clicks Save button without giving status using sheetname {string} and rowNumber {int}")
+	public void admin_clicks_save_button_without_giving_status_using_sheetname_and_row_number(String sheetName,
+			Integer RowNumber) throws InvalidFormatException, IOException, InterruptedException {
+		ExcelReader reader = new ExcelReader();
+
+		List<Map<String, String>> testdata = reader.getData(
+				"/Users/amreennaziasyed/eclipse-workspace/DSALGO/Team12_XpathWarriors_LMS_UI_Apr2024/src/test/resources/TestData/Team12-TestData-LMS-UI-Hackathon-April2024.xlsx",
+				sheetName);
+		String emailid = testdata.get(RowNumber).get("Staff Email Id");
+		String skill = testdata.get(RowNumber).get("Skill");
+		String programname = testdata.get(RowNumber).get("Program Name");
+		String batchname = testdata.get(RowNumber).get("Batch Name");
+		userpage.fillwithoutstatus(emailid, skill, programname, batchname);
+	}
+
+	// Scenario 12**//
+	@When("Admin clicks Cancel or Close Icon on Assign Staff form")
+	public void admin_clicks_cancel_or_close_icon_on_assign_staff_form() {
+
+		userpage.validate_close_AssignStaff();
+	}
+
+	@Then("Assign Staff popup window should be closed without saving")
+	public void assign_staff_popup_window_should_be_closed_without_saving() {
+		LoggerLoad.info("Validate Cancel or Close icon on Assign Staff form");
+		Assert.assertEquals(userpage.getManageuser(), Constant.MANAGE_USERPAGE_HEADER);
+	}
+
+	// Scenario 13**//
+	@When("Enter all the required fields with valid values and click Save button using sheetname {string} and rowNumber {int}")
+	public void enter_all_the_required_fields_with_valid_values_and_click_save_button_using_sheetname_and_row_number(
+			String sheetName, Integer RowNumber) throws InvalidFormatException, IOException, InterruptedException {
+		ExcelReader reader = new ExcelReader();
+
+		List<Map<String, String>> testdata = reader.getData(
+				"/Users/amreennaziasyed/eclipse-workspace/DSALGO/Team12_XpathWarriors_LMS_UI_Apr2024/src/test/resources/TestData/Team12-TestData-LMS-UI-Hackathon-April2024.xlsx",
+				sheetName);
+		String emailid = testdata.get(RowNumber).get("Staff Email Id");
+		String skill = testdata.get(RowNumber).get("Skill");
+		String programname = testdata.get(RowNumber).get("Program Name");
+		String batchname = testdata.get(RowNumber).get("Batch Name");
+		userpage.fillwithalldetails(emailid, skill, programname, batchname);
+	}
+
+	@Then("Admin gets a message alert as {string}")
+	public void admin_gets_a_message_alert_as(String string) {
+		LoggerLoad.info("Validate Save button on Assign Staff form");
+		Assert.assertTrue(userpage.validate_assignedStaff().contains(string));
+	}
+
+	// Scenario 14**//
+	@When("Admin clicks on Cancel button")
+	public void admin_clicks_on_cancel_button() {
+		userpage.validate_Cancel_AssignStaff();
+	}
+
+	@Then("Admin can see the Assign Staff popup disappears without assigning")
+	public void admin_can_see_the_assign_staff_popup_disappears_without_assigning() {
+		LoggerLoad.info("Validate Cancel button on Assign Staff form");
+		Assert.assertEquals(userpage.getManageuser(), Constant.MANAGE_USERPAGE_HEADER);
 	}
 
 }
