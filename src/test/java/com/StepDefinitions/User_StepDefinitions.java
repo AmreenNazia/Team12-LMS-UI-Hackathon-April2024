@@ -41,7 +41,7 @@ public class User_StepDefinitions {
 	public void admin_clicks_from_navigation_bar(String text) {
 		if (userpage.getUser().equals(text))
 			userpage.click_User();
-
+ 
 	}
 
 	@Then("Admin should see the {string} in the URL")
@@ -593,5 +593,48 @@ public class User_StepDefinitions {
 		LoggerLoad.info("Validate Cancel button on Assign Staff form");
 		Assert.assertEquals(userpage.getManageuser(), Constant.MANAGE_USERPAGE_HEADER);
 	}
+	
+	/************************** Sort User
+	 * @throws InterruptedException **************************************/
+	@When("Admin clicks on ID sort icon")
+	public void admin_clicks_on_id_sort_icon() throws InterruptedException {
+	    userpage.click_sortId();
+	}
+
+	@Then("Admin should see User details are sorted by id")
+	public void admin_should_see_user_details_are_sorted_by_id() {
+	    userpage.SortAscendingOrder(userpage.getSortingUserId());
+	}
+
+	@When("Admin clicks on name sort icon")
+	public void admin_clicks_on_name_sort_icon() throws InterruptedException {
+	     userpage.click_sortUserName();
+	}
+
+	@Then("Admin should see User details are sorted by name")
+	public void admin_should_see_user_details_are_sorted_by_name() {
+		userpage.SortAscendingOrder(userpage.getSortingUserName());
+	}
+
+	@When("Admin clicks on Location sort icon")
+	public void admin_clicks_on_location_sort_icon() throws InterruptedException {
+	    userpage.click_sortUserLocation();
+	}
+
+	@Then("Admin should see User details are sorted by Location")
+	public void admin_should_see_user_details_are_sorted_by_location() {
+		userpage.SortAscendingOrder(userpage.getSortingUserLocation());
+	}
+
+	@When("Admin clicks on Phone number sort icon")
+	public void admin_clicks_on_phone_number_sort_icon() throws InterruptedException {
+	  userpage.click_sortUserphonenum();
+	}
+
+	@Then("Admin should see User details are sorted by Phone number")
+	public void admin_should_see_user_details_are_sorted_by_phone_number() {
+		userpage.sortAscendingOrderInteger(userpage.getSortingUserPhoneNumber());
+	}
+
 
 }
