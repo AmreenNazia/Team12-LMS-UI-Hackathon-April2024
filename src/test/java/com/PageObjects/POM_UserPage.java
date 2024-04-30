@@ -1,7 +1,9 @@
 package com.PageObjects;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -198,7 +200,25 @@ public class POM_UserPage {
 	
 	@FindBy(xpath="/html/body/app-root/app-user/div/p-dialog[2]/div/div/div[1]/div/button")
 	private WebElement close_btn;
-
+	
+	/*-----------------Sort User-----------------*/
+	@FindBy(xpath="//tr//td[2]")
+	private List<WebElement> sort_Id;
+	@FindBy(xpath="//tr//td[3]")
+	private List<WebElement>  sort_user;
+	@FindBy(xpath="//tr//td[4]")
+	private List<WebElement>  sort_location;
+	@FindBy(xpath="//tr//td[5]")
+	private List<WebElement>  sort_phoneNumber;
+	@FindBy(xpath="//tr//th[2]")
+	private WebElement sortUserId;
+	@FindBy(xpath="//thead//tr//th[3]")
+	private WebElement sortUserName;
+	@FindBy(xpath="//thead//tr//th[4]")
+	private WebElement sortUserLocation;
+	@FindBy(xpath="//thead//tr//th[5]")
+	private WebElement sortUserPhonenumber;
+	/*-----------------Sort User-----------------*/
 	public String getPageTtile() {
 		return driver.getTitle();
 	}
@@ -855,4 +875,65 @@ public class POM_UserPage {
 		return data;
 	}
 
-}
+	/*---------------------------------Sort User----------------------------------*/
+	public List<WebElement> getSortingUserId() {
+		return sort_Id;
+	}
+	public List<WebElement> getSortingUserName() {
+		return sort_user;
+	}
+	public List<WebElement> getSortingUserLocation() {
+		return sort_location;
+	}
+	
+	public List<WebElement> getSortingUserPhoneNumber() {
+		return sort_phoneNumber;
+	}
+	
+	public void click_sortId() throws InterruptedException {
+		Thread.sleep(1000);
+		ElementsUtil.ScrolltoElementandClick(driver, sortUserId, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		
+	}
+	public void click_sortUserName() throws InterruptedException {
+		Thread.sleep(1000);
+		ElementsUtil.ScrolltoElementandClick(driver, sortUserName, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+	}
+	public void click_sortUserLocation() throws InterruptedException {
+		Thread.sleep(1000);
+		ElementsUtil.ScrolltoElementandClick(driver, sortUserLocation, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+	}
+	public void click_sortUserphonenum() throws InterruptedException {
+		Thread.sleep(1000);
+		ElementsUtil.ScrolltoElementandClick(driver, sortUserPhonenumber, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+	}
+	public void SortAscendingOrder(List<WebElement> list) {
+		List<String> appSort = list.stream().map(s->s.getText()).collect(Collectors.toList());
+		System.out.println(appSort);
+		
+		List<String> SortedList= appSort.stream().sorted(String.CASE_INSENSITIVE_ORDER).collect(Collectors.toList());
+		System.out.println(SortedList);
+		Assert.assertTrue(appSort.equals(SortedList));
+		
+	}
+	
+	public void sortAscendingOrderInteger(List<WebElement> list ) {
+	 
+			 
+			List<String> appsort =  list.stream().map(s -> s.getText()).collect(Collectors.toList());
+			System.out.println(appsort);
+			List<Integer> numList = new ArrayList<>();
+			 
+			for(String str : appsort) {
+				int num = Integer.parseInt(str);
+				numList.add(num);	
+			}
+			 
+			List<Integer> sortedList = appsort.stream().map(Integer::valueOf).sorted().collect(Collectors.toList());
+			System.out.println(sortedList);
+			
+			Assert.assertTrue(numList.equals(sortedList));
+		}
+	
+	}
+
