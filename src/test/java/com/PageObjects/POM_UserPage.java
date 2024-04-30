@@ -17,7 +17,6 @@ import org.testng.Assert;
 
 import com.Utilities.Constant;
 import com.Utilities.ElementsUtil;
-import com.Utilities.LoggerLoad;
 
 import io.opentelemetry.exporter.logging.SystemOutLogRecordExporter;
 

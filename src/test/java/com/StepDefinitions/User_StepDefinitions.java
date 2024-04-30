@@ -1,4 +1,4 @@
-package com.StepDefinitions;
+ package com.StepDefinitions;
 
 import java.io.IOException;
 
@@ -182,8 +182,11 @@ public class User_StepDefinitions {
 
 	}
 
-	// --------------------------------Add New
-	// User----------------------------------------//
+ 
+	// --------------------------------Add New User----------------------------------------//
+
+
+ 
 
 	// Scenario 01**//Given - scenario - 14//
 	@When("Admin clicks {string} button")
@@ -399,6 +402,7 @@ public class User_StepDefinitions {
 
 	// *****************************Assign Staff Scenario 01*********************//
 
+ 
 	@Given("Admin is in manage user page")
 	public void admin_is_in_manage_user_page() {
 		userpage.click_User();

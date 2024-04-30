@@ -1,7 +1,9 @@
 package com.Utilities;
 
 import java.time.Duration;
-import java.util.List;
+ import java.util.Set;
+ import java.util.List;
+
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -77,12 +79,27 @@ public class ElementsUtil {
 					+ ". Exception is: " + e.getMessage());
 		}
 	}
-	public static void implicitPageWait(WebDriver driver) {	
+ 
+
+	public static void sendInput(WebDriver driver, WebElement element, String textToBeTyped,
+			long durationInSeconds) {
+		try {
+			element.clear();
+			element.click();
+			element.sendKeys(textToBeTyped);
+		} catch (Exception e) {
+			LoggerLoad.error("typeInputIntoElement()::Not able to send text in " + element.toString()
+					+ ". Exception is: " + e.getMessage());
+		}
+	}
+
+
+	public static void implicitPageWait(WebDriver driver) {
 
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Constant.IMPLICIT_PAGE_LOAD));//10sec
 
      }
-	public static void explicitElementWait(WebDriver driver) {	
+	public static void explicitElementWait(WebDriver driver) {
 
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Constant.EXPLICIT_ELEMENT_WAIT_TIME));//10sec
 
@@ -91,7 +108,7 @@ public class ElementsUtil {
 		Thread.sleep(1000);
 	}
 	public static void waitForPageLoad(WebDriver driver) {
-		
+
 		String pageLoadStatus =null;
 		do {
 
@@ -102,8 +119,9 @@ public class ElementsUtil {
 
 	          System.out.println("Page Loaded.");
 	}
-	
-	
 
-	
+
+
+
+
 }
