@@ -112,7 +112,7 @@ public class POM_Dashboard {
 
 	public boolean VerifyNavigationBarRightAligned() {
 
-		for (WebElement navBarElement : ElementsUtil.waitForElementVisibility(driver, NavigationBar,
+		for (WebElement navBarElement : ElementsUtil.waitForElementsVisibility(driver, NavigationBar,
 				Constant.EXPLICIT_ELEMENT_WAIT_TIME)) {
 
 			String textAlign = navBarElement.getCssValue("text-align");
@@ -129,7 +129,7 @@ public class POM_Dashboard {
 	public List<String> getNavigationBarText() {
 
 		List<String> navigationBarText = new ArrayList<>();
-		for (WebElement element : ElementsUtil.waitForElementVisibility(driver, NavigationBar,
+		for (WebElement element : ElementsUtil.waitForElementsVisibility(driver, NavigationBar,
 				Constant.EXPLICIT_ELEMENT_WAIT_TIME)) {
 			navigationBarText.add(element.getText());
 		}
@@ -162,12 +162,12 @@ public class POM_Dashboard {
 	}
 
 	public void clickLogout() {
-		ElementsUtil.waitForElementVisibility(driver, logoutNavbar, Constant.EXPLICIT_WAIT_TIME).click();
+		ElementsUtil.waitForElementVisibility(driver, logoutNavbar, Constant.EXPLICIT_ELEMENT_WAIT_TIME).click();
 
 	}
 	
 	public String getLoginTitle() {
-	    return	ElementsUtil.waitForElementVisibility(driver, loginTitle, Constant.EXPLICIT_WAIT_TIME).getText();
+	    return	ElementsUtil.waitForElementVisibility(driver, loginTitle, Constant.EXPLICIT_ELEMENT_WAIT_TIME).getText();
 
 	}
 	

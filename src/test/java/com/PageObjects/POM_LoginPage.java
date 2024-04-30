@@ -3,7 +3,6 @@ package com.PageObjects;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -53,9 +52,9 @@ public class POM_LoginPage {
 		return DashboardTitle;
 	}
 
-	public void enterInvalidCredentials(String invalidUserName, String inValidPassword) {
+	public void enterInvalidCredentials(String invalidUserName, String invalidPassword) {
 		ElementsUtil.typeInputIntoElement(driver, username, invalidUserName, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
-		ElementsUtil.typeInputIntoElement(driver, password, inValidPassword, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.typeInputIntoElement(driver, password, invalidPassword, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 	}
 
 	public String getErrorMessage() {
