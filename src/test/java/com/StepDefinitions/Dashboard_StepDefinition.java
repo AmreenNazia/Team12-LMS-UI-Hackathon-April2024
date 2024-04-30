@@ -1,16 +1,12 @@
 package com.StepDefinitions;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
-
 import java.io.IOException;
 import java.util.List;
 
 import org.testng.Assert;
 
 import com.PageObjects.POM_Dashboard;
-import com.PageObjects.POM_HomePage;
-import com.PageObjects.POM_LoginPage;
+import com.Utilities.Constant;
 import com.Utilities.LoggerLoad;
 import com.Utilities.TestContext;
 
@@ -27,14 +23,14 @@ public class Dashboard_StepDefinition {
 	public Dashboard_StepDefinition(TestContext testcontext) {
 
 		this.testcontext = testcontext;
-		dashboard = testcontext.getpageObjectManager().getdashboardPage();
+		dashboard = testcontext.getpageObjectManager().getDashboardPage();
 	}
 
 	// verify header
 	@Then("Admin should see manage program as header")
 	public void admin_should_see_manage_program_as_header() {
-		String headerText = dashboard.getManageProgram().trim();
-		Assert.assertEquals(headerText, "Manage Program");
+		String headerText = dashboard.getManageProgram();
+		Assert.assertEquals(headerText, Constant.MANAGE_PROGRAMPAGE_HEADER);
 		LoggerLoad.info("Validate Manage Program header:" + headerText);
 	}
 
@@ -56,13 +52,13 @@ public class Dashboard_StepDefinition {
 	@Then("Admin should see LMS -Learning management system  as title")
 	public void admin_should_see_lms_learning_management_system_as_title() {
 		LoggerLoad.info("Title of dashboard page:" + dashboard.getLMSTtitle());
-		Assert.assertEquals(dashboard.getLMSTtitle(), "LMS - Learning Management System");
+		Assert.assertEquals(dashboard.getLMSTtitle(), Constant.LMS_TITLE);
 	}
 
 	// verify LMS title spelling
 	@Then("Admin should see correct spelling and space in LMS title")
 	public void admin_should_see_correct_spelling_and_space_in_LMS_title() {
-		Assert.assertEquals(dashboard.getLMSTtitle(), "LMS - Learning Management System");
+		Assert.assertEquals(dashboard.getLMSTtitle(), Constant.LMS_TITLE);
 		LoggerLoad.info("Actual Lms Title: " + dashboard.getLMSTtitle());
 	}
 
@@ -93,28 +89,28 @@ public class Dashboard_StepDefinition {
 	// verify navigation bar first place
 	@Then("Admin should see program in the 1st place")
 	public void admin_should_see_program_in_the_1st_place() {
-		Assert.assertEquals(dashboard.getFirstPlaceNavBar(), "Program");
+		Assert.assertEquals(dashboard.getFirstPlaceNavBar(), Constant.PROGRAM_NAVBAR_TEXT);
 		LoggerLoad.info("Navigation Bar text in first place:" + dashboard.getFirstPlaceNavBar());
 	}
 
 	// verify navigation bar second place
 	@Then("Admin should see batch in the 2nd place")
 	public void admin_should_see_batch_in_the_2nd_place() {
-		Assert.assertEquals(dashboard.getSecondPlaceNavBar(), "Batch");
+		Assert.assertEquals(dashboard.getSecondPlaceNavBar(), Constant.BATCH_NAVBAR_TEXT);
 		LoggerLoad.info("Navigation Bar text in second place:" + dashboard.getSecondPlaceNavBar());
 	}
 
 	// verify navigation bar third place
 	@Then("Admin should see user in the  3rd place")
 	public void admin_should_see_user_in_the_3rd_place() {
-		Assert.assertEquals(dashboard.getThirdPlaceNavBar(), "User");
+		Assert.assertEquals(dashboard.getThirdPlaceNavBar(), Constant.USER_NAVBAR_TEXT);
 		LoggerLoad.info("Navigation Bar text in third place:" + dashboard.getThirdPlaceNavBar());
 	}
 
 	// verify navigation bar fourth place
 	@Then("Admin should see logout in the 4th place")
 	public void admin_should_see_logout_in_the_4th_place() {
-		Assert.assertEquals(dashboard.getFourthPlaceNavBar(), "Logout");
+		Assert.assertEquals(dashboard.getFourthPlaceNavBar(), Constant.LOGOUT_NAVBAR_TEXT);
 		LoggerLoad.info("Navigation Bar text in fourth place:" + dashboard.getFourthPlaceNavBar());
 	}
 	
@@ -126,7 +122,7 @@ public class Dashboard_StepDefinition {
 
 	@Then("Admin should land on login in page")
 	public void admin_should_land_on_login_in_page() {
-	    Assert.assertEquals(dashboard.getLoginTitle(), "Please login to LMS application");
+	    Assert.assertEquals(dashboard.getLoginTitle(), Constant.LOGIN_TITLE);
 	}
 
 }
