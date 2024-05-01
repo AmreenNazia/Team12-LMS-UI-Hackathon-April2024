@@ -51,6 +51,7 @@ public class POM_LoginPage {
 		String DashboardTitle = driver.getTitle();
 		return DashboardTitle;
 	}
+ 
 
 	public void enterInvalidCredentials(String invalidUserName, String invalidPassword) {
 		ElementsUtil.typeInputIntoElement(driver, username, invalidUserName, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
@@ -94,3 +95,6 @@ public class POM_LoginPage {
 	}
 
 }
+ 
+  
+ 

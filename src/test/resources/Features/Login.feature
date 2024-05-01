@@ -3,9 +3,10 @@ Feature: Login Page Validation
 
   Background: Admin gives correct lms portal url
    Given Admin is in login page
-   
-@validLogin 
+
+@validLogin
    Scenario: Validate login with valid credentials
+ 
    When Admin enter valid credentials  and clicks login button 
    Then Admin should land on dashboard page
    
@@ -33,3 +34,7 @@ Feature: Login Page Validation
    Scenario: verify login button action through mouse
    When Admin enter valid credentials  and clicks login button through mouse
    Then Admin should land on dashboard page
+ 
+   When Admin enter valid credentials  and clicks login button
+   Then Admin should land on dashboard page
+ 

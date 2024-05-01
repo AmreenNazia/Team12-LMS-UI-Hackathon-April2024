@@ -5,14 +5,14 @@
 	<groupId>Team12_XpathWarriors_LMS_UI_Apr2024</groupId>
 	<artifactId>Team12_XpathWarriors_LMS_UI_Apr2024</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	
+
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.13.0</version>
-				
+
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -23,18 +23,13 @@
 						<include>**/Test*.java</include>
 					</includes>
 					<properties>
-					<parallel>methods</parallel>
-					<useUnlimitedThreads>true</useUnlimitedThreads>
-					<threadCount>7</threadCount> 
+						<parallel>methods</parallel>
+						<useUnlimitedThreads>true</useUnlimitedThreads>
+						<threadCount>7</threadCount>
 					</properties>
 					<suiteXmlFiles>
 						<suiteXmlFile>testng.xml</suiteXmlFile>
 					</suiteXmlFiles>
-				<!--	<properties>
-						<dataproviderthreadcount> 20 </dataproviderthreadcount>
-						<parallel> tests </parallel>
-						<threadcount> 5 </threadcount>
-					</properties>-->
 				</configuration>
 			</plugin>
 		</plugins>
@@ -48,6 +43,8 @@
 			<artifactId>selenium-java</artifactId>
 			<version>4.18.1</version>
 		</dependency>
+ 
+ 
 
 		<!--
 		https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
@@ -59,6 +56,7 @@
 
 		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
 		<dependency>
+ 
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
 			<version>7.9.0</version>
@@ -72,7 +70,7 @@
 			<version>7.15.0</version>
 		</dependency>
 
-		 
+
 		<!--
 		https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
 		<dependency>
@@ -80,9 +78,11 @@
 			<artifactId>log4j-api</artifactId>
 			<version>2.23.0</version>
 		</dependency>
+ 
 		<!--
 		https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
 		<dependency>
+ 
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
 			<version>2.23.0</version>
@@ -102,6 +102,7 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>2.0.12</version>
+ 
 		</dependency>
 		<!--
 		https://mvnrepository.com/artifact/tech.grasshopper/extentreports-cucumber7-adapter -->
@@ -110,12 +111,14 @@
 			<artifactId>extentreports-cucumber7-adapter</artifactId>
 			<version>1.14.0</version>
 		</dependency>
+ 
 
 		<!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-testng -->
 		<dependency>
 			<groupId>io.qameta.allure</groupId>
 			<artifactId>allure-testng</artifactId>
 			<version>2.27.0</version>
+ 
 		</dependency>
 		<!--
 		https://mvnrepository.com/artifact/io.qameta.allure/allure-cucumber7-jvm -->
@@ -130,14 +133,15 @@
 			<artifactId>cucumber-java</artifactId>
 			<version>7.15.0</version>
 		</dependency>
-	
+
+ 
 		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-testng</artifactId>
 			<version>7.15.0</version>
 		</dependency>
-		
+
 
 		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
 		<dependency>
@@ -152,6 +156,7 @@
 			<artifactId>poi</artifactId>
 			<version>5.2.2</version>
 		</dependency>
+ 
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
@@ -164,17 +169,15 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>3.14.0</version>
 		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/net.sourceforge.tess4j/tess4j -->
+ 
+
 <dependency>
-    <groupId>net.sourceforge.tess4j</groupId>
-    <artifactId>tess4j</artifactId>
-    <version>4.5.1</version>
-</dependency>
-
-	
-
-
-
+			<groupId>net.sourceforge.tess4j</groupId>
+			<artifactId>tess4j</artifactId>
+			<version>4.5.1</version>
+		</dependency>
 	</dependencies>
+	<!-- https://mvnrepository.com/artifact/net.sourceforge.tess4j/tess4j -->
+		
 </project>
+ 
