@@ -1,5 +1,6 @@
 package com.ApplicationHooks;
 
+ 
 import java.io.ByteArrayInputStream;
 import java.time.Duration;
 import java.util.Properties;
@@ -42,27 +43,16 @@ public class AppHooks {
 		if(driver!=null && scenario.isFailed())
 		{
 			byte[] screenShot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+ 
  			Allure.addAttachment("Failed Scenario Screenshot", new ByteArrayInputStream(screenShot));
 			scenario.attach(screenShot, "image/png", "image");// This will attach screenshot to html report
+ 
 		}
 		LoggerLoad.info("Closing driver from hook's teardown method...");
  		if(driver!=null)
 		driver.quit();
 	}
 
-
-
-	// @AfterStep
-	// public void AddScreenshot(Scenario scenario) throws IOException {
-  //
-	// 	if(scenario.isFailed()){
-  //
-	// 		File sourcePath = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-	// 		byte[] fileContent = FileUtils.readFileToByteArray(sourcePath);
-	// 		scenario.attach(fileContent, "image/png", "image");
-	// 	}
-  //
-  //
-	// }
+ 
 
 }

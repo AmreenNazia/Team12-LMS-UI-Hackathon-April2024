@@ -3,8 +3,10 @@ package com.Utilities;
 import java.time.Duration;
  
  
+ 
  import java.util.Set;
  import java.util.List;
+ 
  
 
 
@@ -29,6 +31,7 @@ public class ElementsUtil {
 		}
 		return webElement;
 	}
+ 
 	public static List<WebElement> waitForElementsVisibility(WebDriver driver, List<WebElement> elememt, long durationInSeconds) {
 		// explicit wait
 		List<WebElement> webElement = null;
@@ -41,20 +44,7 @@ public class ElementsUtil {
 		}
 		return webElement;
 	}
-
-	public static List<WebElement> waitForElementsVisibility(WebDriver driver, List<WebElement> element,
-			long durationInSeconds) {
-		// explicit wait
-		List<WebElement> webElement = null;
-		try {
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(durationInSeconds));
-			webElement = wait.until(ExpectedConditions.visibilityOfAllElements(element));
-		} catch (Exception e) {
-			LoggerLoad.error("waitForElementVisibility()::The element " + element.toString()
-					+ " may not be visible. Exception is: " + e.getMessage());
-		}
-		return webElement;
-	}
+ 
 
 	public static void ScrolltoElementandClick(WebDriver driver, WebElement element, long durationInSeconds) {
 

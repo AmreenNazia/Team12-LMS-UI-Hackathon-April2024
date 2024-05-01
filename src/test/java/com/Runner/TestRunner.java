@@ -14,9 +14,12 @@ import io.cucumber.testng.CucumberOptions;
 		"json:cucumber-report/jsonReport.json",
 		"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 		"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
-		})
+ 
+		"rerun:target/failed_scenarios.txt"})
+
  
 public class TestRunner extends AbstractTestNGCucumberTests {
+ 
 
 	@Override
 	@DataProvider(parallel = false)
