@@ -2,6 +2,8 @@ package com.ApplicationHooks;
 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
@@ -54,6 +56,7 @@ public class AppHooks {
 		{			
 			byte[] screenShot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
 			Allure.addAttachment("Failed Scenario Screenshot", new ByteArrayInputStream(screenShot));
+			scenario.attach(screenShot, "image/png", "image");
 		}
 		LoggerLoad.info("Closing driver from hook's teardown method...");		
 		if(driver!=null)
@@ -61,18 +64,9 @@ public class AppHooks {
 	}
 	
 
-	@AfterStep 
-	public void AddScreenshot(Scenario scenario) throws IOException {
+	
 		
-		if(scenario.isFailed()){
-			
-			File sourcePath = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-			byte[] fileContent = FileUtils.readFileToByteArray(sourcePath);
-			scenario.attach(fileContent, "image/png", "image");
-		}
-		
-		
-	}
+	
 
 
 }

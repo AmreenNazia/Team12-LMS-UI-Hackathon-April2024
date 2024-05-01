@@ -28,7 +28,7 @@
 					<threadCount>7</threadCount> 
 					</properties>
 					<suiteXmlFiles>
-						<suiteXmlFile>testngLMS.xml</suiteXmlFile>
+						<suiteXmlFile>testng.xml</suiteXmlFile>
 					</suiteXmlFiles>
 				<!--	<properties>
 						<dataproviderthreadcount> 20 </dataproviderthreadcount>
@@ -165,6 +165,13 @@
 			<version>3.14.0</version>
 		</dependency>
 		
+		<!-- https://mvnrepository.com/artifact/net.sourceforge.tess4j/tess4j -->
+<dependency>
+    <groupId>net.sourceforge.tess4j</groupId>
+    <artifactId>tess4j</artifactId>
+    <version>4.5.1</version>
+</dependency>
+
 	
 
 
