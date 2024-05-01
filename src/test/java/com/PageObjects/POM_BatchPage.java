@@ -29,7 +29,7 @@ public class POM_BatchPage {
 	ExcelReader reader;
 	WebDriverWait wait;
 
-	String xlPath = "src\\test\\resources\\TestData\\Team12-TestData-LMS-UI-Hackathon-April2024.xlsx";
+	String xlPath = "src\\test\\resources\\TestData\\Team12-TestData-LMS-UI-Hackathon-April2024-2.xlsx";
 
 	public POM_BatchPage(WebDriver driver) {
 		this.driver = driver;
