@@ -195,6 +195,9 @@ public class POM_BatchPage {
 	@FindBy(xpath = "//p-table/div/div[1]/table/tbody/tr")
 	WebElement firstRow;
 
+	@FindBy(xpath = "//p-dialog/div/div/div[2]/div[3]/p-dropdown/div/input")
+	WebElement programDropdownTextField;
+
 	public String getManageBatchHeader() {
 		return manageBatchHeader.getText();
 	}
@@ -423,9 +426,10 @@ public class POM_BatchPage {
 		List<Map<String, String>> data = reader.getData(xlPath, "Batch");
 
 		nameTextField.sendKeys(data.get(0).get("Name"));
-		programNameDropdown.click();
+		programDropdownTextField.sendKeys("xpathteam1267");
+		//programNameDropdown.click();
 
-		option.click();
+		//option.click();
 		activeButton.click();
 		NumberOfClassesTextField.sendKeys(data.get(0).get("Number of Classes"));
 		saveButton.click();
