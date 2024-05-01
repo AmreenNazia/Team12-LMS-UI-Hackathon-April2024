@@ -1,5 +1,8 @@
 package com.PageObjects;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.commons.math3.util.Pair;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -112,12 +115,6 @@ WebDriver driver;
 
 	@FindBy(xpath = "/html/body/app-root/app-user/div/mat-card/mat-card-content/p-table/div/div[1]/table/thead/tr/th[5]")
 	WebElement phoneNumberSort;
-
-	@FindBy(xpath = "/html/body/app-root/app-user/div/mat-card/mat-card-content/p-table/div/div[1]/table/tbody/tr[1]/td[2]")
-	WebElement idElement;
-	
-	@FindBy(xpath = "/html/body/app-root/app-user/div/mat-card/mat-card-content/p-table/div/div[1]/table/tbody/tr[1]/td[6]/div/span/button[2]")
-	WebElement deleteButton;
 	
 	
 	@FindBy(className = "p-dialog-title")
@@ -131,6 +128,24 @@ WebDriver driver;
 	@FindBy(className = "p-dialog-header-close")
 	WebElement dialogCloseButton;
 	
+	@FindBy(xpath = "/html/body/app-root/app-user/div/mat-card/mat-card-content/p-table/div/div[1]/table/tbody/tr[1]/td[6]/div/span/button[2]")
+	WebElement deleteButton;
+	
+	@FindBy(xpath="/html/body/app-root/app-user/div/mat-card/mat-card-title/div[2]/div[1]/button")
+	WebElement multiDeleteButton;
+	
+	@FindBy(xpath = "/html/body/app-root/app-user/div/mat-card/mat-card-content/p-table/div/div[1]/table/tbody/tr[1]/td[1]")
+	WebElement firstRowCheckBox;
+	
+	@FindBy(xpath = "/html/body/app-root/app-user/div/mat-card/mat-card-content/p-table/div/div[1]/table/tbody/tr[2]/td[1]")
+	WebElement secondRowCheckBox;
+	
+	@FindBy(xpath = "/html/body/app-root/app-user/div/mat-card/mat-card-content/p-table/div/div[1]/table/tbody/tr[1]/td[2]")
+	WebElement idElementFirstRow;
+
+	
+	@FindBy(xpath = "/html/body/app-root/app-user/div/mat-card/mat-card-content/p-table/div/div[1]/table/tbody/tr[2]/td[2]")
+	WebElement idElementSecondRow;
 	
 
 	public void click_User(String User)  {
@@ -148,12 +163,7 @@ WebDriver driver;
 		LoggerLoad.info("Opened the Edit window popup...");
 	}
 	
-	public String clickDeleteButton() {
-		String id = idElement.getText();
-		ElementsUtil.ScrolltoElementandClick(driver, deleteButton, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
-		LoggerLoad.info("clicked the delete user ");
-		return id;
-	}
+
 
 	public void waitForEditUserPageTitle() {
 		ElementsUtil.waitForElementVisibility(driver, editUserTitle, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
@@ -325,7 +335,7 @@ WebDriver driver;
 
 	public void clickDialogYesOption()  {
 		 ElementsUtil.ScrolltoElementandClick(driver, yesButton, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
-
+		 LoggerLoad.info("......deleted user........");
 	}
 	
 	public void clickDialogNoOption()  {
@@ -337,16 +347,59 @@ WebDriver driver;
 		 ElementsUtil.ScrolltoElementandClick(driver, dialogCloseButton, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 
 	}
-
-
-	public void checkIDExistence(String deletedID, boolean exists) {
-		String id = idElement.getText();
-		if(exists) {
-			Assert.assertEquals(id, deletedID);
-		} else {
-			Assert.assertNotEquals(id, deletedID);
-		}
+	
+	public String clickDeleteButton() {
+		String id = idElementFirstRow.getText();
+		ElementsUtil.ScrolltoElementandClick(driver, deleteButton, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		LoggerLoad.info("clicked the delete user ");
+		return id;
+	}
+	
+	public String[] clickMultiDeleteButton() {
+		String id1 = idElementFirstRow.getText();
+		String id2 = idElementSecondRow.getText();
+		ElementsUtil.ScrolltoElementandClick(driver, multiDeleteButton, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		LoggerLoad.info("clicked the delete user ");
+		return new String[] {id1, id2};
+	}
+	
+	public void checkDeleteEnabled() {
+		Assert.assertTrue(multiDeleteButton.isEnabled());
+	}
+	
+	public String clickFirstRowCheckBox() {
+		 ElementsUtil.ScrolltoElementandClick(driver, firstRowCheckBox, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		 return idElementFirstRow.getText();
+		 
+	}
+	
+	public String clickSecondRowCheckBox() {
+		 ElementsUtil.ScrolltoElementandClick(driver, secondRowCheckBox, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		 return idElementSecondRow.getText();
 	}
 
 
+	public void checkFirstRowIDExistence(String deletedID, boolean exists) {
+		if(idElementFirstRow.isDisplayed()) {
+			String id = idElementFirstRow.getText();
+			if(exists) {
+				Assert.assertEquals(id, deletedID);
+			} else {
+				Assert.assertNotEquals(id, deletedID);
+			}
+		}
+		
+	}
+
+	public void checkSecondRowIDExistence(String deletedID, boolean exists) {
+		if(idElementSecondRow.isDisplayed()) {
+			String id = idElementSecondRow.getText();
+			if(exists) {
+				Assert.assertEquals(id, deletedID);
+			} else {
+				Assert.assertNotEquals(id, deletedID);
+			}
+		}
+		
+	}
 }

@@ -110,55 +110,6 @@ public class UserEdit_StepDefination {
 		userEditPage.verifyModifiedValue("lastName", InputValueType.CANCNEL_INPUT);
 	}
 
-//sort
-	@When("Admin clicks on ID sort icon")
-	public void admin_clicks_on_id_sort_icon() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@Then("Admin should see User details are sorted by id")
-	public void admin_should_see_user_details_are_sorted_by_id() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@When("Admin clicks on name sort icon")
-	public void admin_clicks_on_name_sort_icon() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@Then("Admin should see User details are sorted by name")
-	public void admin_should_see_user_details_are_sorted_by_name() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@When("Admin clicks on Location sort icon")
-	public void admin_clicks_on_location_sort_icon() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@Then("Admin should see User details are sorted by Location")
-	public void admin_should_see_user_details_are_sorted_by_location() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@When("Admin clicks on Phone number sort icon")
-	public void admin_clicks_on_phone_number_sort_icon() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
-	@Then("Admin should see User details are sorted by Phone number")
-	public void admin_should_see_user_details_are_sorted_by_phone_number() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
-	}
-
 //delete
 
 	@When("Admin clicks the delete icon")
@@ -176,7 +127,7 @@ public class UserEdit_StepDefination {
 	public void admin_is_on_confirm_deletion_alert() {
 		userEditPage.searchInput(testUserName);
 		String id = userEditPage.clickDeleteButton();
-		scenarioContextMap.put("deleteID", id);
+		scenarioContextMap.put("firstRowID", id);
 	}
 
 	@When("Admin clicks yes option")
@@ -187,9 +138,9 @@ public class UserEdit_StepDefination {
 	@Then("Admin gets a message {string} alert and do not see that user in the data table")
 	public void admin_gets_a_message_alert_and_do_not_see_that_user_in_the_data_table(String deletedMsg) {
 		userEditPage.checkDetailedMsg(deletedMsg);
-		String deletedID = scenarioContextMap.get("deleteID");
+		String deletedID = scenarioContextMap.get("firstRowID");
 		userEditPage.searchInput(testUserName);
-		userEditPage.checkIDExistence(deletedID, false);
+		userEditPage.checkFirstRowIDExistence(deletedID, false);
 
 	}
 
@@ -200,9 +151,9 @@ public class UserEdit_StepDefination {
 
 	@Then("Admin can see the deletion alert disappears without deleting")
 	public void admin_can_see_the_deletion_alert_disappears_without_deleting() {
-		String deletedID = scenarioContextMap.get("deleteID");
+		String deletedID = scenarioContextMap.get("firstRowID");
 		userEditPage.searchInput(testUserName);
-		userEditPage.checkIDExistence(deletedID, true);
+		userEditPage.checkFirstRowIDExistence(deletedID, true);
 	}
 
 	@When("Admin will  click the close button")
@@ -212,83 +163,62 @@ public class UserEdit_StepDefination {
 
 	@Then("Admin can see the deletion alert disappears without any changes")
 	public void admin_can_see_the_deletion_alert_disappears_without_any_changes() {
-		String deletedID = scenarioContextMap.get("deleteID");
+		String deletedID = scenarioContextMap.get("firstRowID");
 		userEditPage.searchInput(testUserName);
-		userEditPage.checkIDExistence(deletedID, true);
+		userEditPage.checkFirstRowIDExistence(deletedID, true);
+	}
+
+	@When("Admin clicks any checkbox in the data table")
+	public void admin_clicks_any_checkbox_in_the_data_table() {
+		userEditPage.searchInput(testUserName);
+		String id1 = userEditPage.clickFirstRowCheckBox();
+		scenarioContextMap.put("firstRowID", id1);
+	}
+
+	@Then("Admin should see common delete option enabled under header Manage User")
+	public void admin_should_see_common_delete_option_enabled_under_header_manage_user() {
+		userEditPage.checkDeleteEnabled();
 	}
 
 
-@When("Admin clicks any checkbox in the data table")
-public void admin_clicks_any_checkbox_in_the_data_table() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
+	@Given("Admin clicks delete button under header after selecting the checkbox in the data table")
+	public void admin_clicks_delete_button_under_header_after_selecting_the_checkbox_in_the_data_table() {
+		userEditPage.searchInput(testUserName);
+		String id1 = userEditPage.clickFirstRowCheckBox();
+		scenarioContextMap.put("firstRowID", id1);
+		userEditPage.clickMultiDeleteButton();
+	}
 
-@Then("Admin should see common delete option enabled under header Manage User")
-public void admin_should_see_common_delete_option_enabled_under_header_manage_user() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
+	@Then("Admin should land on Manage User page and can see the selected users are not deleted from the data table")
+	public void admin_should_land_on_manage_user_page_and_can_see_the_selected_usesr_is_not_deleted_from_the_data_table() {
+		String firstRowID = scenarioContextMap.get("firstRowID");
+		String secondRowID = scenarioContextMap.get("secondRowID");
+		userEditPage.searchInput(testUserName);
+		userEditPage.checkFirstRowIDExistence(firstRowID, true);
+		if (secondRowID != null) {
+			userEditPage.checkSecondRowIDExistence(secondRowID, true);
+		}
+	}
 
-@Given("Admin clicks delete button under header after selecting the check box in the data table")
-public void admin_clicks_delete_button_under_header_after_selecting_the_check_box_in_the_data_table() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
+	@Given("Admin clicks delete button under header after selecting multiple checkboxes in the data table")
+	public void admin_clicks_delete_button_under_header_after_selecting_multiple_checkboxes_in_the_data_table() {
+		userEditPage.searchInput(testUserName);
+		String id1 = userEditPage.clickFirstRowCheckBox();
+		scenarioContextMap.put("firstRowID", id1);
+		String id2 = userEditPage.clickSecondRowCheckBox();
+		scenarioContextMap.put("secondRowID", id2);
+		userEditPage.clickMultiDeleteButton();
+	}
 
-@When("Admin clicks <YES> button on the alert")
-public void admin_clicks_yes_button_on_the_alert() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-
-@Then("Admin should land on Manage User page and can see the selected user is deleted from the data table")
-public void admin_should_land_on_manage_user_page_and_can_see_the_selected_user_is_deleted_from_the_data_table() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-
-@Given("Admin clicks delete button under header after selecting the checkbox in the data table")
-public void admin_clicks_delete_button_under_header_after_selecting_the_checkbox_in_the_data_table() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-
-
-
-@Then("Admin should land on Manage User page and can see the selected user is not deleted from the data table")
-public void admin_should_land_on_manage_user_page_and_can_see_the_selected_user_is_not_deleted_from_the_data_table() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-
-@Given("Admin clicks delete button under header after selecting multiple checkboxes in the data table")
-public void admin_clicks_delete_button_under_header_after_selecting_multiple_checkboxes_in_the_data_table() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-
-@Then("Admin should land on Manage User page and can see the selected users are deleted from the data table")
-public void admin_should_land_on_manage_user_page_and_can_see_the_selected_users_are_deleted_from_the_data_table() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-
-@When("Admin clicks <NO> button on the alert")
-public void admin_clicks_no_button_on_the_alert() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-
-@Then("Admin should land on Manage User page and can see the selected users are not deleted from the data table")
-public void admin_should_land_on_manage_user_page_and_can_see_the_selected_users_are_not_deleted_from_the_data_table() {
-    // Write code here that turns the phrase above into concrete actions
-    throw new io.cucumber.java.PendingException();
-}
-
+	@Then("Admin should land on Manage User page and can see the selected users are deleted from the data table")
+	public void admin_should_land_on_manage_user_page_and_can_see_the_selected_users_are_deleted_from_the_data_table() {
+		String firstRowID = scenarioContextMap.get("firstRowID");
+		String secondRowID = scenarioContextMap.get("secondRowID");
+		userEditPage.searchInput(testUserName);
+		userEditPage.checkFirstRowIDExistence(firstRowID, false);
+		if (secondRowID != null) {
+			userEditPage.checkSecondRowIDExistence(secondRowID, false);
+		}
+	}
 
 }
-
-
-
-

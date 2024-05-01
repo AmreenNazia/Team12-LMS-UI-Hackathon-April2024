@@ -5,7 +5,7 @@ import org.testng.annotations.DataProvider;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
-@CucumberOptions(features = "src/test/resources/Features/UserDelete.feature", glue = { "com.StepDefinitions",
+@CucumberOptions(tags = "", features = "src/test/resources/Features/MultipleUserDelete.feature", glue = { "com.StepDefinitions",
 "com.ApplicationHooks" }, monochrome = true, dryRun = false, plugin = { "pretty",
 		"html:cucumber-report/htmlReport.html",
 		"json:cucumber-report/jsonReport.json",
