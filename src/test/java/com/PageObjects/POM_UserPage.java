@@ -1,6 +1,9 @@
 package com.PageObjects;
 
+import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -10,6 +13,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import com.Utilities.Constant;
@@ -176,11 +181,13 @@ public class POM_UserPage {
 	private WebElement search_batchName;
 	@FindBy(xpath = "/html/body/div/div[2]/ul/p-multiselectitem[1]")
 	private WebElement checkbox_batchName;
-	@FindBy(xpath = "//*[@id=\"Active\"]") // p-dropdown//li
+	@FindBy(xpath = "/html/body/div/div[1]/button")
+	private WebElement crossbtn_batch;
+	@FindBy(xpath = "/html/body/app-root/app-user/div/p-dialog[2]/div/div/div[2]/form/div[6]/div[2]/p-radiobutton/div/div[2]")
 	private WebElement radioBtn_active;
 	@FindBy(xpath = "/html/body/app-root/app-user/div/p-dialog[2]/div/div/div[2]/form/div[2]/div")
 	private WebElement error_studentemailid;
-	@FindBy(xpath = "//*[@id=\"userId\"]/div/span")
+	@FindBy(xpath = "/html/body/app-root/app-user/div/p-dialog[2]/div/div/div[2]/form/div[2]/p-dropdown/div/span")
 	private WebElement staffemailId;
 	@FindBy(xpath = "//p-dropdown//li")
 	private List<WebElement> listofEmailid;
@@ -188,7 +195,30 @@ public class POM_UserPage {
 	private List<WebElement> erro_skill;
 	@FindBy(xpath = "//p-paginator//div//span[1]")
 	private WebElement pagination;
-
+	@FindBy(xpath = "//button[@label ='Cancel']")
+	private WebElement Cancel_assignStaff;
+	
+	@FindBy(xpath="/html/body/app-root/app-user/div/p-dialog[2]/div/div/div[1]/div/button")
+	private WebElement close_btn;
+	
+	/*-----------------Sort User-----------------*/
+	@FindBy(xpath="//tr//td[2]")
+	private List<WebElement> sort_Id;
+	@FindBy(xpath="//tr//td[3]")
+	private List<WebElement>  sort_user;
+	@FindBy(xpath="//tr//td[4]")
+	private List<WebElement>  sort_location;
+	@FindBy(xpath="//tr//td[5]")
+	private List<WebElement>  sort_phoneNumber;
+	@FindBy(xpath="//tr//th[2]")
+	private WebElement sortUserId;
+	@FindBy(xpath="//thead//tr//th[3]")
+	private WebElement sortUserName;
+	@FindBy(xpath="//thead//tr//th[4]")
+	private WebElement sortUserLocation;
+	@FindBy(xpath="//thead//tr//th[5]")
+	private WebElement sortUserPhonenumber;
+	/*-----------------Sort User-----------------*/
 	public String getPageTtile() {
 		return driver.getTitle();
 	}
@@ -545,6 +575,7 @@ public class POM_UserPage {
 	}
 
 	public void searchfortheuser() throws InterruptedException {
+		Thread.sleep(2000);
 		boolean ispageexists = false;
 		boolean isUserexists = false;
 		while (!isUserexists) {
@@ -641,8 +672,11 @@ public class POM_UserPage {
 		action.sendKeys(batchname).click().perform();
 
 		action.moveToElement(checkbox_batchName).click().perform();
-//		ElementsUtil.ScrolltoElementandClick(driver, checkbox_batchName, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.ScrolltoElementandClick(driver, crossbtn_batch, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		// ElementsUtil.ScrolltoElementandClick(driver, checkbox_batchName,
+		// Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 		ElementsUtil.waitForElementVisibility(driver, radioBtn_active, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+
 		ElementsUtil.ScrolltoElementandClick(driver, radioBtn_active, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 		ElementsUtil.waitForElementVisibility(driver, Save_Button, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 		ElementsUtil.ScrolltoElementandClick(driver, Save_Button, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
@@ -656,18 +690,19 @@ public class POM_UserPage {
 
 	public void fillwithoutSkill(String emailid, String programName, String batchname) throws InterruptedException {
 		Actions action = new Actions(driver);
-		Thread.sleep(1000);
-//		ElementsUtil.waitForElementVisibility(driver, staffemailId, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		 
+		ElementsUtil.waitForElementVisibility(driver, staffemailId, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 		ElementsUtil.ScrolltoElementandClick(driver, staffemailId, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
-		ElementsUtil.typeInputIntoElement(driver, staffemailId, emailid, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		Thread.sleep(1000);
+		ElementsUtil.waitForElementsVisibility(driver, listofEmailid, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 		for (WebElement e : listofEmailid) {
-			if (e.getText().contains(emailid))
-				e.click();
-			System.out.println("---------" + e.getText() + "----------");
-			break;
+			System.out.println(e.getText());
+			if (e.getText().contains(emailid)) {
+				System.out.println("----------Email ID Found---------");
+				break;
+			}
 		}
-
-//		action.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).perform();
+		// action.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).perform();
 		ElementsUtil.waitForElementVisibility(driver, Skills, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 		action.sendKeys(Keys.BACK_SPACE).sendKeys(Keys.BACK_SPACE).sendKeys(Keys.BACK_SPACE).sendKeys(Keys.BACK_SPACE)
 				.perform();
@@ -683,26 +718,222 @@ public class POM_UserPage {
 		action.sendKeys(batchname).click().perform();
 
 		action.moveToElement(checkbox_batchName).click().perform();
+		ElementsUtil.ScrolltoElementandClick(driver, crossbtn_batch, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 
 		ElementsUtil.waitForElementVisibility(driver, radioBtn_active, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 		ElementsUtil.ScrolltoElementandClick(driver, radioBtn_active, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 		ElementsUtil.waitForElementVisibility(driver, Save_Button, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 		ElementsUtil.ScrolltoElementandClick(driver, Save_Button, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+
+	}
+
+	public void fillwithoutprogram(String emailid, String Skill, String batchname) throws InterruptedException {
+		Actions action = new Actions(driver);
+		 
+		ElementsUtil.waitForElementVisibility(driver, staffemailId, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.ScrolltoElementandClick(driver, staffemailId, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 		Thread.sleep(1000);
-
-	}
-
-	public void validate_SkillerrorMessage(String text) {
-		for (WebElement e : erro_skill)
-
-		{
-			Assert.assertEquals(e.getText(), text);
+		ElementsUtil.waitForElementsVisibility(driver, listofEmailid, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		for (WebElement e : listofEmailid) {
+			System.out.println(e.getText());
+			if (e.getText().contains(emailid)) {
+				break;
+			}
 		}
+		// action.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).perform();
+		ElementsUtil.waitForElementVisibility(driver, Skills, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.typeInputIntoElement(driver, Skills, Skill, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.waitForElementVisibility(driver, batchName_dropdown, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.ScrolltoElementandClick(driver, batchName_dropdown, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.ScrolltoElementandClick(driver, search_batchName, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+
+		action.sendKeys(batchname).click().perform();
+
+		action.moveToElement(checkbox_batchName).click().perform();
+		ElementsUtil.ScrolltoElementandClick(driver, crossbtn_batch, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+
+		ElementsUtil.waitForElementVisibility(driver, radioBtn_active, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.ScrolltoElementandClick(driver, radioBtn_active, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.waitForElementVisibility(driver, Save_Button, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.ScrolltoElementandClick(driver, Save_Button, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+
 	}
 
+	public void fillwithoutbatch(String emailid, String Skill, String programname) throws InterruptedException {
+		Actions action = new Actions(driver);
+	 
+		ElementsUtil.waitForElementVisibility(driver, staffemailId, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.ScrolltoElementandClick(driver, staffemailId, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		Thread.sleep(1000);
+		ElementsUtil.waitForElementsVisibility(driver, listofEmailid, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		for (WebElement e : listofEmailid) {
+			System.out.println(e.getText());
+			if (e.getText().contains(emailid)) {
+				break;
+			}
+		}
+		// action.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).perform();
+		ElementsUtil.waitForElementVisibility(driver, Skills, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.typeInputIntoElement(driver, Skills, Skill, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.waitForElementVisibility(driver, programName_dropdown, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.ScrolltoElementandClick(driver, programName_dropdown, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		action.sendKeys(programname).click().perform();
+
+		ElementsUtil.waitForElementVisibility(driver, radioBtn_active, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.ScrolltoElementandClick(driver, radioBtn_active, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.waitForElementVisibility(driver, Save_Button, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.ScrolltoElementandClick(driver, Save_Button, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+
+	}
+	public void fillwithoutstatus(String emailid, String skill,String programName, String batchname) throws InterruptedException {
+		Actions action = new Actions(driver);
+		 
+		ElementsUtil.waitForElementVisibility(driver, staffemailId, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.ScrolltoElementandClick(driver, staffemailId, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		Thread.sleep(1000);
+		ElementsUtil.waitForElementsVisibility(driver, listofEmailid, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		for (WebElement e : listofEmailid) {
+			System.out.println(e.getText());
+			if (e.getText().contains(emailid)) {
+				 break;
+			}
+		}
+		// action.sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).perform();
+		ElementsUtil.waitForElementVisibility(driver, Skills, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		 ElementsUtil.typeInputIntoElement(driver, Skills,skill, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		 ElementsUtil.waitForElementVisibility(driver, programName_dropdown, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.ScrolltoElementandClick(driver, programName_dropdown, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		action.sendKeys(programName).click().perform();
+		ElementsUtil.waitForElementVisibility(driver, batchName_dropdown, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.ScrolltoElementandClick(driver, batchName_dropdown, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.ScrolltoElementandClick(driver, search_batchName, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		action.sendKeys(batchname).click().perform();
+		action.moveToElement(checkbox_batchName).click().perform();
+		ElementsUtil.ScrolltoElementandClick(driver, crossbtn_batch, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.waitForElementVisibility(driver, Save_Button, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.ScrolltoElementandClick(driver, Save_Button, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+
+	}
+	public void fillwithalldetails(String emailid, String skill,String programName, String batchname) throws InterruptedException {
+		Actions action = new Actions(driver);
+		 
+		ElementsUtil.waitForElementVisibility(driver, staffemailId, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.ScrolltoElementandClick(driver, staffemailId, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		Thread.sleep(2000);
+		ElementsUtil.waitForElementsVisibility(driver, listofEmailid, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		for (WebElement e : listofEmailid) {
+			System.out.println(e.getText());
+			if (e.getText().contains(emailid)) {
+				 break;
+			}
+		}
+		 
+		ElementsUtil.waitForElementVisibility(driver, Skills, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		 ElementsUtil.typeInputIntoElement(driver, Skills,skill, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		 ElementsUtil.waitForElementVisibility(driver, programName_dropdown, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.ScrolltoElementandClick(driver, programName_dropdown, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		action.sendKeys(programName).click().perform();
+		ElementsUtil.waitForElementVisibility(driver, batchName_dropdown, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.ScrolltoElementandClick(driver, batchName_dropdown, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.ScrolltoElementandClick(driver, search_batchName, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		action.sendKeys(batchname).click().perform();
+		action.moveToElement(checkbox_batchName).click().perform();
+		ElementsUtil.ScrolltoElementandClick(driver, crossbtn_batch, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.waitForElementVisibility(driver, radioBtn_active, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.ScrolltoElementandClick(driver, radioBtn_active, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.waitForElementVisibility(driver, Save_Button, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.ScrolltoElementandClick(driver, Save_Button, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+
+	}
+
+
+	public void validate_SkillerrorMessage(String text) throws InterruptedException {
+		Thread.sleep(1000);
+		ElementsUtil.waitForElementsVisibility(driver, erro_skill, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		Assert.assertEquals(erro_skill.size(), 1 );
+		for (WebElement e : erro_skill)
+		{
+			 Assert.assertTrue(e.getText().contains(text));
+		
+	}
+	}
 	public void validate_Cancel_btn() {
 		ElementsUtil.waitForElementVisibility(driver, btn_Cancel, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 		ElementsUtil.ScrolltoElementandClick(driver, btn_Cancel, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 	}
 
-}
+	public void validate_Cancel_AssignStaff() {
+		ElementsUtil.waitForElementVisibility(driver, Cancel_assignStaff, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.ScrolltoElementandClick(driver, Cancel_assignStaff, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+	}
+	public void validate_close_AssignStaff() {
+		ElementsUtil.waitForElementVisibility(driver, close_btn, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		ElementsUtil.ScrolltoElementandClick(driver, close_btn, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+	}
+	public String validate_assignedStaff() {
+		String data = alertmessage.getText();
+		return data;
+	}
+
+	/*---------------------------------Sort User----------------------------------*/
+	public List<WebElement> getSortingUserId() {
+		return sort_Id;
+	}
+	public List<WebElement> getSortingUserName() {
+		return sort_user;
+	}
+	public List<WebElement> getSortingUserLocation() {
+		return sort_location;
+	}
+	
+	public List<WebElement> getSortingUserPhoneNumber() {
+		return sort_phoneNumber;
+	}
+	
+	public void click_sortId() throws InterruptedException {
+		Thread.sleep(1000);
+		ElementsUtil.ScrolltoElementandClick(driver, sortUserId, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		
+	}
+	public void click_sortUserName() throws InterruptedException {
+		Thread.sleep(1000);
+		ElementsUtil.ScrolltoElementandClick(driver, sortUserName, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+	}
+	public void click_sortUserLocation() throws InterruptedException {
+		Thread.sleep(1000);
+		ElementsUtil.ScrolltoElementandClick(driver, sortUserLocation, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+	}
+	public void click_sortUserphonenum() throws InterruptedException {
+		Thread.sleep(1000);
+		ElementsUtil.ScrolltoElementandClick(driver, sortUserPhonenumber, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+	}
+	public void SortAscendingOrder(List<WebElement> list) {
+		List<String> appSort = list.stream().map(s->s.getText()).collect(Collectors.toList());
+		System.out.println(appSort);
+		
+		List<String> SortedList= appSort.stream().sorted(String.CASE_INSENSITIVE_ORDER).collect(Collectors.toList());
+		System.out.println(SortedList);
+		Assert.assertTrue(appSort.equals(SortedList));
+		
+	}
+	
+	public void sortAscendingOrderInteger(List<WebElement> list ) {
+	 
+			 
+			List<String> appsort =  list.stream().map(s -> s.getText()).collect(Collectors.toList());
+			System.out.println(appsort);
+			List<Integer> numList = new ArrayList<>();
+			 
+			for(String str : appsort) {
+				int num = Integer.parseInt(str);
+				numList.add(num);	
+			}
+			 
+			List<Integer> sortedList = appsort.stream().map(Integer::valueOf).sorted().collect(Collectors.toList());
+			System.out.println(sortedList);
+			
+			Assert.assertTrue(numList.equals(sortedList));
+		}
+	
+	}
+
