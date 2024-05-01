@@ -1,8 +1,11 @@
 package com.Utilities;
 
 import java.time.Duration;
+ 
+ 
  import java.util.Set;
  import java.util.List;
+ 
 
 
 import org.openqa.selenium.JavascriptExecutor;
@@ -34,6 +37,20 @@ public class ElementsUtil {
 			webElement = wait.until(ExpectedConditions.visibilityOfAllElements(elememt));
 		} catch (Exception e) {
 			LoggerLoad.error("waitForElementVisibility()::The element " + elememt.toString()
+					+ " may not be visible. Exception is: " + e.getMessage());
+		}
+		return webElement;
+	}
+
+	public static List<WebElement> waitForElementsVisibility(WebDriver driver, List<WebElement> element,
+			long durationInSeconds) {
+		// explicit wait
+		List<WebElement> webElement = null;
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(durationInSeconds));
+			webElement = wait.until(ExpectedConditions.visibilityOfAllElements(element));
+		} catch (Exception e) {
+			LoggerLoad.error("waitForElementVisibility()::The element " + element.toString()
 					+ " may not be visible. Exception is: " + e.getMessage());
 		}
 		return webElement;
@@ -81,6 +98,25 @@ public class ElementsUtil {
 	}
  
 
+	public static boolean isTextBox(WebDriver driver, WebElement element) {
+
+		String tagName = element.getTagName().toLowerCase();
+		String type = element.getAttribute("type");
+		return tagName.equals("input") && (type.equalsIgnoreCase("text") || (type.equalsIgnoreCase("number")));
+
+	}
+
+	public static boolean isradioButton(WebDriver driver, WebElement element) {
+
+		String tagName = element.getTagName().toLowerCase();
+		String type = element.getAttribute("type");
+		return tagName.equals("input") && (type.equalsIgnoreCase("radio"));
+
+	}
+	
+ 
+ 
+
 	public static void sendInput(WebDriver driver, WebElement element, String textToBeTyped,
 			long durationInSeconds) {
 		try {
@@ -124,4 +160,5 @@ public class ElementsUtil {
 
 
 
+ 
 }
