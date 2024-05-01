@@ -24,8 +24,8 @@ public class Login_StepDefinition {
 	public Login_StepDefinition(TestContext testcontext) {
 
 		this.testcontext = testcontext;
-		loginpage = testcontext.getpageObjectManager().getLoginPage();
-		dashboard = testcontext.getpageObjectManager().getDashboardPage();
+		loginpage = testcontext.pageobjectmanager.getLoginPage();
+		dashboard = testcontext.pageobjectmanager.getDashboardPage();
 	}
 
 	@Given("Admin is in login page")

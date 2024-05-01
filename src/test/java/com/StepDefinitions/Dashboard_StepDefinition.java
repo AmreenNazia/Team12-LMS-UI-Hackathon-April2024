@@ -23,7 +23,7 @@ public class Dashboard_StepDefinition {
 	public Dashboard_StepDefinition(TestContext testcontext) {
 
 		this.testcontext = testcontext;
-		dashboard = testcontext.getpageObjectManager().getDashboardPage();
+		dashboard = testcontext.pageobjectmanager.getDashboardPage();
 	}
 
 	// verify header

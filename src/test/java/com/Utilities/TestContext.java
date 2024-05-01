@@ -5,7 +5,7 @@ import com.DriverFactory.BaseTest;
 public class TestContext extends BaseTest {
 	
 private BaseTest basetest;
-private pageObjectManager pageobjectmanager;
+public pageObjectManager pageobjectmanager;
 
 public TestContext()
 {
