@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 import com.Utilities.Constant;
@@ -114,16 +113,28 @@ WebDriver driver;
 	@FindBy(xpath = "/html/body/app-root/app-user/div/mat-card/mat-card-content/p-table/div/div[1]/table/thead/tr/th[5]")
 	WebElement phoneNumberSort;
 
-
-
+	@FindBy(xpath = "/html/body/app-root/app-user/div/mat-card/mat-card-content/p-table/div/div[1]/table/tbody/tr[1]/td[2]")
+	WebElement idElement;
+	
+	@FindBy(xpath = "/html/body/app-root/app-user/div/mat-card/mat-card-content/p-table/div/div[1]/table/tbody/tr[1]/td[6]/div/span/button[2]")
+	WebElement deleteButton;
+	
+	
+	@FindBy(className = "p-dialog-title")
+	WebElement dialogConfimTextHeader;
+	@FindBy(xpath = "//span[contains(@class,'p-confirm-dialog-message')]")
+	WebElement dialogMessage;
+	@FindBy(xpath = "//span[text()='No']/..")
+	WebElement noButton;
+	@FindBy(xpath = "//span[text()='Yes']/..")
+	WebElement yesButton;
+	@FindBy(className = "p-dialog-header-close")
+	WebElement dialogCloseButton;
+	
+	
 
 	public void click_User(String User)  {
 		 ElementsUtil.ScrolltoElementandClick(driver, btn_user, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
-		 try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 
 	}
 
@@ -134,12 +145,14 @@ WebDriver driver;
 
 	public void clickEditButton() {
 		ElementsUtil.ScrolltoElementandClick(driver, edit_btn, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 		LoggerLoad.info("Opened the Edit window popup...");
+	}
+	
+	public String clickDeleteButton() {
+		String id = idElement.getText();
+		ElementsUtil.ScrolltoElementandClick(driver, deleteButton, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		LoggerLoad.info("clicked the delete user ");
+		return id;
 	}
 
 	public void waitForEditUserPageTitle() {
@@ -152,8 +165,10 @@ WebDriver driver;
 		try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 	}
 
 
@@ -168,7 +183,6 @@ WebDriver driver;
 				ElementsUtil.sendInput(driver, element, value, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 			} else if (tagName.equalsIgnoreCase("p-dropdown")) {
 				element.click();
-				Thread.sleep(1000);
 				WebElement option = element.findElement(By.xpath("//li[@aria-label='"+value+"']"));
 				option.click();
 
@@ -303,6 +317,36 @@ WebDriver driver;
 	}
 
 
+	public void checkAlertExistence(String alertStr) {
+		ElementsUtil.waitForElementVisibility(driver, dialogMessage, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+		Assert.assertNotNull(dialogConfimTextHeader.getText(), alertStr);
+	}
+	
+
+	public void clickDialogYesOption()  {
+		 ElementsUtil.ScrolltoElementandClick(driver, yesButton, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+
+	}
+	
+	public void clickDialogNoOption()  {
+		 ElementsUtil.ScrolltoElementandClick(driver, noButton, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+
+	}
+	
+	public void clickDialogCloseButton()  {
+		 ElementsUtil.ScrolltoElementandClick(driver, dialogCloseButton, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
+
+	}
+
+
+	public void checkIDExistence(String deletedID, boolean exists) {
+		String id = idElement.getText();
+		if(exists) {
+			Assert.assertEquals(id, deletedID);
+		} else {
+			Assert.assertNotEquals(id, deletedID);
+		}
+	}
 
 
 }

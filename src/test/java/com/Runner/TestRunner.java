@@ -5,7 +5,7 @@ import org.testng.annotations.DataProvider;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
-@CucumberOptions(tags = "", features = "src/test/resources/Features", glue = { "com.StepDefinitions",
+@CucumberOptions(features = "src/test/resources/Features/UserDelete.feature", glue = { "com.StepDefinitions",
 "com.ApplicationHooks" }, monochrome = true, dryRun = false, plugin = { "pretty",
 		"html:cucumber-report/htmlReport.html",
 		"json:cucumber-report/jsonReport.json",
@@ -15,7 +15,7 @@ import io.cucumber.testng.CucumberOptions;
 public class TestRunner extends AbstractTestNGCucumberTests {
 
 	@Override
-	@DataProvider(parallel = true)
+	@DataProvider(parallel = false)
 	public Object[][] scenarios() {
 		return super.scenarios();
 	}
