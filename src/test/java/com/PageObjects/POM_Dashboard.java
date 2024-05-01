@@ -46,12 +46,13 @@ public class POM_Dashboard {
 
 	@FindBy(xpath = "//app-program/div/mat-card/mat-card-title/div[1]")
 	private WebElement manageProgram;
-	
+
 	@FindBy(xpath = "//app-login/div/mat-card/mat-card-content/form/p")
 	private WebElement loginTitle;
 
 	public void clickOnBatchTab() {
-		batchTab.click();
+
+		ElementsUtil.ScrolltoElementandClick(driver, batchTab, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 
 	}
 
@@ -61,6 +62,11 @@ public class POM_Dashboard {
 
 	public boolean OnDashBoardOrNot() {
 		return batchTab.isDisplayed();
+	}
+
+	public WebElement getBatchTab() {
+		return batchTab;
+
 	}
 
 	public String getManageProgram() {
@@ -165,10 +171,10 @@ public class POM_Dashboard {
 		ElementsUtil.waitForElementVisibility(driver, logoutNavbar, Constant.EXPLICIT_ELEMENT_WAIT_TIME).click();
 
 	}
-	
+
 	public String getLoginTitle() {
-	    return	ElementsUtil.waitForElementVisibility(driver, loginTitle, Constant.EXPLICIT_ELEMENT_WAIT_TIME).getText();
+		return ElementsUtil.waitForElementVisibility(driver, loginTitle, Constant.EXPLICIT_ELEMENT_WAIT_TIME).getText();
 
 	}
-	
+
 }
