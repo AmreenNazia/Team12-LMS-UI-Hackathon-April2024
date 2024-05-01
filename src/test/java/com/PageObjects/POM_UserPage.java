@@ -689,10 +689,10 @@ public class POM_UserPage {
 
 	public void fillwithoutSkill(String emailid, String programName, String batchname) throws InterruptedException {
 		Actions action = new Actions(driver);
-		Thread.sleep(1000);
+		 
 		ElementsUtil.waitForElementVisibility(driver, staffemailId, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 		ElementsUtil.ScrolltoElementandClick(driver, staffemailId, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		ElementsUtil.waitForElementsVisibility(driver, listofEmailid, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 		for (WebElement e : listofEmailid) {
 			System.out.println(e.getText());
@@ -728,10 +728,10 @@ public class POM_UserPage {
 
 	public void fillwithoutprogram(String emailid, String Skill, String batchname) throws InterruptedException {
 		Actions action = new Actions(driver);
-		Thread.sleep(1000);
+		 
 		ElementsUtil.waitForElementVisibility(driver, staffemailId, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 		ElementsUtil.ScrolltoElementandClick(driver, staffemailId, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		ElementsUtil.waitForElementsVisibility(driver, listofEmailid, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 		for (WebElement e : listofEmailid) {
 			System.out.println(e.getText());
@@ -760,10 +760,10 @@ public class POM_UserPage {
 
 	public void fillwithoutbatch(String emailid, String Skill, String programname) throws InterruptedException {
 		Actions action = new Actions(driver);
-		Thread.sleep(1000);
+	 
 		ElementsUtil.waitForElementVisibility(driver, staffemailId, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 		ElementsUtil.ScrolltoElementandClick(driver, staffemailId, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		ElementsUtil.waitForElementsVisibility(driver, listofEmailid, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 		for (WebElement e : listofEmailid) {
 			System.out.println(e.getText());
@@ -786,10 +786,10 @@ public class POM_UserPage {
 	}
 	public void fillwithoutstatus(String emailid, String skill,String programName, String batchname) throws InterruptedException {
 		Actions action = new Actions(driver);
-		Thread.sleep(1000);
+		 
 		ElementsUtil.waitForElementVisibility(driver, staffemailId, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 		ElementsUtil.ScrolltoElementandClick(driver, staffemailId, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		ElementsUtil.waitForElementsVisibility(driver, listofEmailid, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 		for (WebElement e : listofEmailid) {
 			System.out.println(e.getText());
@@ -815,7 +815,7 @@ public class POM_UserPage {
 	}
 	public void fillwithalldetails(String emailid, String skill,String programName, String batchname) throws InterruptedException {
 		Actions action = new Actions(driver);
-		Thread.sleep(1000);
+		 
 		ElementsUtil.waitForElementVisibility(driver, staffemailId, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 		ElementsUtil.ScrolltoElementandClick(driver, staffemailId, Constant.EXPLICIT_ELEMENT_WAIT_TIME);
 		Thread.sleep(2000);
