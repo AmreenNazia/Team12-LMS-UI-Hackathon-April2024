@@ -1,6 +1,7 @@
 package com.Utilities;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,6 +19,19 @@ public class ElementsUtil {
 			webElement = wait.until(ExpectedConditions.visibilityOf(element));
 		} catch (Exception e) {
 			LoggerLoad.error("waitForElementVisibility()::The element " + element.toString()
+					+ " may not be visible. Exception is: " + e.getMessage());
+		}
+		return webElement;
+	}
+	
+	public static List<WebElement> waitForElementsVisibility(WebDriver driver, List<WebElement> elememt, long durationInSeconds) {
+		// explicit wait
+		List<WebElement> webElement = null;
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(durationInSeconds));
+			webElement = wait.until(ExpectedConditions.visibilityOfAllElements(elememt));
+		} catch (Exception e) {
+			LoggerLoad.error("waitForElementVisibility()::The element " + elememt.toString()
 					+ " may not be visible. Exception is: " + e.getMessage());
 		}
 		return webElement;

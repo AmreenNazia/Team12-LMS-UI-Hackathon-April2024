@@ -69,7 +69,7 @@ public class UserAssignStudent_Steps {
 
 	}
 
-	//Scenario 2 - Validate_AssignStudent_InputFields_TextBoxes
+	// Scenario 2 - Validate_AssignStudent_InputFields_TextBoxes
 
 	@Then("Admin should see User Role as R03 and other fields Student Email id, Program Name, Batch Name and Status with respective input boxes")
 	public void admin_should_see_user_role_as_r03_and_other_fields_student_email_id_program_name_batch_name_and_status_with_respective_input_boxes() {
@@ -78,30 +78,29 @@ public class UserAssignStudent_Steps {
 
 	}
 
-	//Scenario 3 - Validate Dropdown in Assign Student Form
-	
+	// Scenario 3 - Validate Dropdown in Assign Student Form
+
 	@Then("Admin should see drop down boxes with valid data for Student Email id,Program Name and Batch Name")
 	public void admin_should_see_drop_down_boxes_with_valid_data_for_student_email_id_program_name_and_batch_name() {
 		LoggerLoad.info("Validate Dropdown in Assign Student Form");
-		userAssignStudent.validatingDropDown() ;
-		
+		userAssignStudent.validatingDropDown();
+
 	}
 
-	
-	//Scenario 4 - Validate radio button in Assign Student Form
-	
+	// Scenario 4 - Validate radio button in Assign Student Form
+
 	@Then("Admin should see two radio button for Status")
 	public void admin_should_see_two_radio_button_for_status() {
 		LoggerLoad.info("Validate radio button in Assign Student Form");
 		userAssignStudent.validating_RadioButtons();
 	}
 
-	//Scenario 5 -  Empty Form Submission
-	
+	// Scenario 5 - Empty Form Submission
+
 	@Given("Admin is in Assign Student details pop up page")
 	public void admin_is_in_assign_student_details_pop_up_page() {
 		userAssignStudent.clickUserButton();
-		userAssignStudent.clickAssignStudent(); 
+		userAssignStudent.clickAssignStudent();
 	}
 
 	@When("Admin clicks Save button with entering any data")
@@ -115,8 +114,8 @@ public class UserAssignStudent_Steps {
 		Assert.assertTrue(userAssignStudent.errorMessage_displayed().isDisplayed());
 	}
 
-	//Scenario 10 -  Validate Cancel or Close icon on Assign Student form
-	
+	// Scenario 10 - Validate Cancel or Close icon on Assign Student form
+
 	@When("Admin clicks Cancel or Close Icon on Assign Student form")
 	public void admin_clicks_cancel_or_close_icon_on_assign_student_form() {
 		userAssignStudent.validate_close_AssignStudent();
@@ -128,8 +127,7 @@ public class UserAssignStudent_Steps {
 		Assert.assertEquals(userAssignStudent.getManageuser(), Constant.MANAGE_USERPAGE_HEADER);
 	}
 
-	
-	//Scenario 12 -  Validate Cancel button on Assign Student form
+	// Scenario 12 - Validate Cancel button on Assign Student form
 	@When("Admin clicks Cancel button")
 	public void admin_clicks_cancel_button() {
 		userAssignStudent.validate_Cancel_AssignStudent();
@@ -141,7 +139,4 @@ public class UserAssignStudent_Steps {
 		Assert.assertEquals(userAssignStudent.getManageuser(), Constant.MANAGE_USERPAGE_HEADER);
 	}
 
-	
-	
-	
 }

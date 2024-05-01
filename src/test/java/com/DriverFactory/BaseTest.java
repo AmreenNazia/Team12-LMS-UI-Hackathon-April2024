@@ -19,6 +19,7 @@ public class BaseTest  {
 
 	 
 	private static final String headlesschrome = "headlesschrome";
+	private static final String chrome = "chrome";
 	private static final String firefox = "firefox";
 	private static final String headlessfirefox = "headlessfirefox";
 	private static final String headlessedge = "headlessedge";
@@ -45,9 +46,15 @@ public class BaseTest  {
 	             
 	           	thdriver.set(new ChromeDriver(chromeOptions));
             	break;
+            	
+            case chrome:
+                         LoggerLoad.info("Initializing chrome Browser...");
+                         thdriver.set(new ChromeDriver());
+                         break;
             case firefox:
             	LoggerLoad.info("Initializing firefox Browser...");
             	thdriver.set(new FirefoxDriver());
+            	break;
             case headlessfirefox:
                 LoggerLoad.info("Initializing Firefox Browser in headless mode....");
 				FirefoxOptions firefoxOptions=new FirefoxOptions();
