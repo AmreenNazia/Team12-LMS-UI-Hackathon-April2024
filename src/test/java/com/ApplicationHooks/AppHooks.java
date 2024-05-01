@@ -37,14 +37,11 @@ public class AppHooks {
     
 	@Before
 	public void setUp() {
-		//Get Browser type from config file
-	   // ResourceBundle rb = ResourceBundle.getBundle("Config/config");
-		String browseName =  com.PageObjects.credentialResouceBundle.getBrowser();
+		String browseName = com.PageObjects.credentialResouceBundle.getBrowser();
 		System.out.println(browseName);
-		//Initialize driver from driver factory class
 		basefactory = new BaseTest();
 		driver = basefactory.initializeDriver(browseName);
-		LoggerLoad.info("Hook:-Initializing driver for browser :"+browseName);
+		LoggerLoad.info("Hook:-Initializing driver for browser :" + browseName);
 		driver.get(com.PageObjects.credentialResouceBundle.getURL());
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(Constant.IMPLICIT_PAGE_LOAD));
 		LoggerLoad.info("Hook:-home page url opened successfully");
