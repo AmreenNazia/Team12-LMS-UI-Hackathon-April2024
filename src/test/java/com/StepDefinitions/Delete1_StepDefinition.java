@@ -29,10 +29,10 @@ public class Delete1_StepDefinition {
 		  public Delete1_StepDefinition(TestContext testcontext) {
 				
 				this.testcontext = testcontext;
-				loginpage = testcontext.pageobjectmanager.getlogin();
-				programpage = testcontext.pageobjectmanager.getprogram();
+				loginpage = testcontext.pageobjectmanager.getLoginPage();
+				programpage = testcontext.pageobjectmanager.getProgramPage();
 				
-				dashboardpage=testcontext.pageobjectmanager.getdashboardPage();
+				dashboardpage=testcontext.pageobjectmanager.getDashboardPage();
 
 			}	
 	
@@ -106,15 +106,11 @@ public class Delete1_StepDefinition {
 Thread.sleep(2000);
 		String deletedprogramName = programpage.getprogramfristrecordckeckbox();
 		String deletedSecondprogramName = programpage.getprogramsecondrecordckeckbox();
-	//	LoggerLoad.info("Getting row details before deletion"+ firstRowText);
-	//	LoggerLoad.info("Getting program Name details before deletion" + deletedprogramName);
-	//	LoggerLoad.info("Getting Second Batch Name details before deletion"
-	//			+ deletedSecondprogramName);
+
 		dashboardpage.getDeleteUnderManageProgram().click();
 		Thread.sleep(2000);
 		programpage.clickonYesondelpopup();
-	//	LoggerLoad.info("****Searching for the batch name if it got deleted or not*****");
-	//	LoggerLoad.info("****Validating by using Showing 0 to 0 of 0 entries in footer section*****");
+	
 		List<String> programNamesToCheck = List.of(deletedprogramName, deletedSecondprogramName);
 
 		for (String programName : programNamesToCheck) {

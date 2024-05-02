@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import com.PageObjects.POM_HomePageNew;
 
 import com.PageObjects.POM_ProgramPage;
-
+import com.PageObjects.POM_UserAssignStudent;
 import com.PageObjects.POM_BatchPage;
 import com.PageObjects.POM_Dashboard;
 import com.PageObjects.POM_LoginPage;
@@ -31,7 +31,7 @@ public class pageObjectManager {
 	private POM_BatchPage batchPage;
   private  POM_UserPage userpage;
 	private POM_UserEditPage userEditPage;
-
+    private POM_UserAssignStudent userAssignStudentPage;
 
 
 
@@ -60,14 +60,7 @@ public class pageObjectManager {
 		return userpage;
 	}
 
-	public POM_HomePage getHomePage() {
-		if(homepage==null)
-		{
-			homepage = new POM_HomePage(driver);
-		}
-		return homepage;
-
-	}
+	
 
 	public POM_UserAssignStudent getUserAssignStudentPage() {
 		if(userAssignStudentPage==null)
@@ -95,7 +88,7 @@ public class pageObjectManager {
 			homepage = new POM_HomePageNew(driver);
 
 		}
-		return dashboard;
+		return homepage;
 
 	}
 
