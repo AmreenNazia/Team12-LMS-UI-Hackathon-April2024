@@ -138,16 +138,17 @@ public String VerifyApplicationName() {
 	
 		String[] explitText = extractedText.split("\\R");
 		String projectName = explitText[0];
-		String ApplicationName = projectName.substring(3);
+		String ApplicationName = projectName.substring(2);
 		LoggerLoad.info("Actual Application name:: " + ApplicationName);
 		return ApplicationName;
 	}
 	public String verifyCompanyName() {
 		
 		String[] explitText = extractedText.split("\\R");
-		String companyName = explitText[2];
+		String companyName = explitText[5];
+		String compName=companyName.substring(3);
 		LoggerLoad.info("Actual company Name:: " + companyName);
-		return companyName;
+		return compName;
 	}
 
 	public String loginTitleValidation() {

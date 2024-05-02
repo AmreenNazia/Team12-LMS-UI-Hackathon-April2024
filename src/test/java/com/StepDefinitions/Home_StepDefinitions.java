@@ -25,7 +25,7 @@ public class Home_StepDefinitions {
 	public Home_StepDefinitions(TestContext testcontext) {
 
 		this.testcontext = testcontext;
-		homepage = testcontext.getpageObjectManager().getHomePage();
+		homepage = testcontext.pageobjectmanager.getHomePage();
 	}
 
 	@Given("Admin launch the browser")
