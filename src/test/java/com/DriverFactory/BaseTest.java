@@ -3,38 +3,35 @@ package com.DriverFactory;
 import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
-import org.openqa.selenium.firefox.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.safari.SafariDriver;
 
 import com.Utilities.Constant;
 import com.Utilities.LoggerLoad;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-
-
-public class BaseTest  {
-
-	 
-	private static final String headlesschrome = "headlesschrome";
+public class BaseTest {
+private static final String headlesschrome = "headlesschrome";
 	private static final String chrome = "chrome";
 	private static final String firefox = "firefox";
 	private static final String headlessfirefox = "headlessfirefox";
 	private static final String headlessedge = "headlessedge";
 	private static final String edge = "edge";
 	private static final String safari = "safari";
-	
+
 	public static ThreadLocal<WebDriver> thdriver = new ThreadLocal<>();
-	
+
 	//we keep our WebDriver reference static to make it thread-safe
 
 //This method is use to initialize thread driver for a given browser and thread local will help in parallel execution
 
-		
+
 	public WebDriver initializeDriver(String browser) {
-		
+
 		browser=browser.toLowerCase();
 		try {
 			switch (browser)
@@ -43,14 +40,13 @@ public class BaseTest  {
             	LoggerLoad.info("Initializing Chrome Browser in headless mode...");
 				ChromeOptions chromeOptions = new ChromeOptions();
 	            chromeOptions.addArguments("headless");
-	             
+
 	           	thdriver.set(new ChromeDriver(chromeOptions));
             	break;
-            	
             case chrome:
-                         LoggerLoad.info("Initializing chrome Browser...");
-                         thdriver.set(new ChromeDriver());
-                         break;
+            	LoggerLoad.info("Initializing chrome Browser...");
+            	thdriver.set(new ChromeDriver());
+            	break;
             case firefox:
             	LoggerLoad.info("Initializing firefox Browser...");
             	thdriver.set(new FirefoxDriver());
@@ -59,7 +55,7 @@ public class BaseTest  {
                 LoggerLoad.info("Initializing Firefox Browser in headless mode....");
 				FirefoxOptions firefoxOptions=new FirefoxOptions();
 				firefoxOptions.addArguments("headless");
-				 
+
 				thdriver.set(new FirefoxDriver(firefoxOptions));
             	break;
             case edge:
@@ -70,7 +66,7 @@ public class BaseTest  {
             	LoggerLoad.info("Initializing edge Browser in headless mode....");
             	EdgeOptions edgeOptions=new EdgeOptions();
 				edgeOptions.addArguments("--headless");
-				 
+
 				thdriver.set(new EdgeDriver(edgeOptions));
             	break;
 		     case safari:
@@ -97,6 +93,5 @@ public class BaseTest  {
 		LoggerLoad.error("driver value is :-"+dri);
 		return dri;
 	}
-	
+
 }
-	
