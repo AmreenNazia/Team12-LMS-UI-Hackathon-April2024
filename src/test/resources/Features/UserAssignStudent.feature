@@ -53,3 +53,48 @@ Feature: Validating Assign Student Functionality
     Given Admin is in Assign Student details pop up page
     When Admin clicks Cancel button
     Then Admin can see the Assign Student popup disappears without assigning
+
+  Scenario Outline: Validate the Assign Student form page without giving Student Email id
+    Given Admin is in Assign Student details pop up page
+    When Admin clicks Save button without entering Student Email id using sheetname "<Sheetname>" and rowNumber <RowNumber>
+    Then Admin gets a error message alert as "Student Email id is required"
+
+    Examples: 
+      | Sheetname | RowNumber |
+      | User      |         0 |
+
+  Scenario Outline: Validate the Assign Student form page without giving program name
+    Given Admin is in Assign Student details pop up page
+    When Admin clicks Save button without program name using sheetname "<Sheetname>" and rowNumber <RowNumber>
+    Then Admin gets a error message alert as "Program is required"
+
+    Examples: 
+      | Sheetname | RowNumber |
+      | User      |         0 |
+
+  Scenario Outline: Validate the Assign Student form page without giving batch name
+    Given Admin is in Assign Student details pop up page
+    When Admin clicks Save button without batch name using sheetname "<Sheetname>" and rowNumber <RowNumber>
+    Then Admin gets a error message alert as "Batch is required"
+
+    Examples: 
+      | Sheetname | RowNumber |
+      | User      |         0 |
+
+  Scenario Outline: Validate the Assign Student form page without giving status
+    Given Admin is in Assign Student details pop up page
+    When Admin clicks Save button without status using sheetname "<Sheetname>" and rowNumber <RowNumber>
+    Then Admin gets a error message alert as "Status is required"
+
+    Examples: 
+      | Sheetname | RowNumber |
+      | User      |         0 |
+
+  Scenario Outline: Validate Save button on Assign Student form
+    Given Admin is in Assign Student details pop up page
+    When Enter all the required fields with valid values using "<Sheetname>" and rowNumber <RowNumber> and click Save
+    Then Admin gets a message "Successfully Student Assigned" alert
+
+    Examples: 
+      | Sheetname | RowNumber |
+      | User      |         0 |

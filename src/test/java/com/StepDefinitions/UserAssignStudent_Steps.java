@@ -3,8 +3,15 @@ package com.StepDefinitions;
 import com.PageObjects.POM_UserAssignStudent;
 import com.PageObjects.POM_LoginPage;
 import com.Utilities.Constant;
+import com.Utilities.ExcelReader;
 import com.Utilities.LoggerLoad;
 import com.Utilities.TestContext;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.testng.Assert;
 import io.cucumber.java.en.*;
 
@@ -72,7 +79,7 @@ public class UserAssignStudent_Steps {
 	// Scenario 2 - Validate_AssignStudent_InputFields_TextBoxes
 
 	@Then("Admin should see User Role as R03 and other fields Student Email id, Program Name, Batch Name and Status with respective input boxes")
-	public void admin_should_see_user_role_as_r03_and_other_fields_student_email_id_program_name_batch_name_and_status_with_respective_input_boxes() {
+	public void admin_should_see_user_role_as_r03_and_other_fields_student_email_id_program_name_batch_name_and_status_with_respective_input_boxes() throws InterruptedException {
 		LoggerLoad.info("Validate input fields and their text boxes in Assign Student form");
 		userAssignStudent.validating_assignstudent_Form();
 
@@ -81,7 +88,7 @@ public class UserAssignStudent_Steps {
 	// Scenario 3 - Validate Dropdown in Assign Student Form
 
 	@Then("Admin should see drop down boxes with valid data for Student Email id,Program Name and Batch Name")
-	public void admin_should_see_drop_down_boxes_with_valid_data_for_student_email_id_program_name_and_batch_name() {
+	public void admin_should_see_drop_down_boxes_with_valid_data_for_student_email_id_program_name_and_batch_name() throws InterruptedException {
 		LoggerLoad.info("Validate Dropdown in Assign Student Form");
 		userAssignStudent.validatingDropDown();
 
@@ -110,7 +117,7 @@ public class UserAssignStudent_Steps {
 
 	@Then("Admin gets a Error message alert")
 	public void admin_gets_a_error_message_alert() {
-		LoggerLoad.info(" Empty Form Submission");
+		LoggerLoad.info("******Empty Form Submission******");
 		Assert.assertTrue(userAssignStudent.errorMessage_displayed().isDisplayed());
 	}
 
@@ -118,6 +125,7 @@ public class UserAssignStudent_Steps {
 
 	@When("Admin clicks Cancel or Close Icon on Assign Student form")
 	public void admin_clicks_cancel_or_close_icon_on_assign_student_form() {
+		LoggerLoad.info("******Close the form******");
 		userAssignStudent.validate_close_AssignStudent();
 	}
 
@@ -130,6 +138,7 @@ public class UserAssignStudent_Steps {
 	// Scenario 12 - Validate Cancel button on Assign Student form
 	@When("Admin clicks Cancel button")
 	public void admin_clicks_cancel_button() {
+		LoggerLoad.info("******Cancel the form******");
 		userAssignStudent.validate_Cancel_AssignStudent();
 	}
 
@@ -138,5 +147,77 @@ public class UserAssignStudent_Steps {
 		LoggerLoad.info("Validate Cancel button on Assign Student form");
 		Assert.assertEquals(userAssignStudent.getManageuser(), Constant.MANAGE_USERPAGE_HEADER);
 	}
+	
+	//Scenario - validate without student email id //
+	@When("Admin clicks Save button without entering Student Email id using sheetname {string} and rowNumber {int}")
+	public void admin_clicks_save_button_without_entering_student_email_id_using_sheetname_and_row_number(String sheetName, Integer RowNumber) throws InvalidFormatException, IOException {
+		ExcelReader reader = new ExcelReader();
+
+		List<Map<String, String>> testdata = reader.getData(System.getProperty("user.dir")+
+				"/src/test/resources/TestData/Team12-TestData-LMS-UI-Hackathon-April2024-2.xlsx",sheetName);
+		String programname = testdata.get(RowNumber).get("Student_ProgramName");
+		String batchname = testdata.get(RowNumber).get("Student_BatchName");
+		 
+		userAssignStudent.fillformwithoutStudentemail(programname, batchname);
+	}
+
+	@Then("Admin gets a error message alert as {string}")
+	public void admin_gets_a_error_message_alert_as(String string) throws InterruptedException {
+		userAssignStudent.validate_StudentError(string);
+	}
+
+
+@When("Admin clicks Save button without program name using sheetname {string} and rowNumber {int}")
+public void admin_clicks_save_button_without_program_name_using_sheetname_and_row_number(String sheetName, Integer RowNumber) throws InvalidFormatException, IOException {
+	ExcelReader reader = new ExcelReader();
+
+	List<Map<String, String>> testdata = reader.getData(System.getProperty("user.dir")+
+			"/src/test/resources/TestData/Team12-TestData-LMS-UI-Hackathon-April2024-2.xlsx",sheetName);
+	String emailid = testdata.get(RowNumber).get("Student_EmaiId");
+	String batchname = testdata.get(RowNumber).get("Student_BatchName");
+	 
+	userAssignStudent.fillformwithoutprogramname(emailid, batchname);
+}
+@When("Admin clicks Save button without batch name using sheetname {string} and rowNumber {int}")
+public void admin_clicks_save_button_without_batch_name_using_sheetname_and_row_number(String sheetName	, Integer RowNumber) throws InvalidFormatException, IOException {
+	ExcelReader reader = new ExcelReader();
+
+	List<Map<String, String>> testdata = reader.getData(System.getProperty("user.dir")+
+			"/src/test/resources/TestData/Team12-TestData-LMS-UI-Hackathon-April2024-2.xlsx",sheetName);
+	String emailid = testdata.get(RowNumber).get("Student_EmaiId");
+	String programname = testdata.get(RowNumber).get("Student_ProgramName");
+	 
+	userAssignStudent.fillformwithoutbatchname(emailid, programname);
+}
+
+@When("Admin clicks Save button without status using sheetname {string} and rowNumber {int}")
+public void admin_clicks_save_button_without_status_using_sheetname_and_row_number(String sheetName, Integer RowNumber) throws InvalidFormatException, IOException {
+	ExcelReader reader = new ExcelReader();
+
+	List<Map<String, String>> testdata = reader.getData(System.getProperty("user.dir")+
+			"/src/test/resources/TestData/Team12-TestData-LMS-UI-Hackathon-April2024-2.xlsx",sheetName);
+	String emailid = testdata.get(RowNumber).get("Student_EmaiId");
+	String programname = testdata.get(RowNumber).get("Student_ProgramName");
+	String batchname = testdata.get(RowNumber).get("Student_BatchName");
+	
+	 
+	userAssignStudent.fillformwithoutstatus(emailid, programname,batchname);
+}
+@When("Enter all the required fields with valid values using {string} and rowNumber {int} and click Save")
+public void enter_all_the_required_fields_with_valid_values_using_and_row_number_and_click_save(String sheetName, Integer RowNumber) throws InvalidFormatException, IOException {
+	ExcelReader reader = new ExcelReader();
+
+	List<Map<String, String>> testdata = reader.getData(System.getProperty("user.dir")+
+			"/src/test/resources/TestData/Team12-TestData-LMS-UI-Hackathon-April2024-2.xlsx",sheetName);
+	String emailid = testdata.get(RowNumber).get("Student_EmaiId");
+	String programname = testdata.get(RowNumber).get("Student_ProgramName");
+	String batchname = testdata.get(RowNumber).get("Student_BatchName");
+	userAssignStudent.fillformwithvalidata(emailid, programname,batchname);
+}
+@Then("Admin gets a message {string} alert")
+public void admin_gets_a_message_alert(String string) {
+	LoggerLoad.info("Validate Save button on Assign Staff form");
+	Assert.assertTrue(userAssignStudent.Success_alertmessage().contains(string));
+}
 
 }
