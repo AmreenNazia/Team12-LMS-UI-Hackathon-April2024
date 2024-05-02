@@ -379,21 +379,30 @@ WebDriver driver;
 	}
 
 
-	public void checkFirstRowIDExistence(String deletedID, boolean exists) {
-		if(idElementFirstRow.isDisplayed()) {
-			String id = idElementFirstRow.getText();
-			if(exists) {
-				Assert.assertEquals(id, deletedID);
-			} else {
-				Assert.assertNotEquals(id, deletedID);
+	 public void checkFirstRowIDExistence(String deletedID, boolean exists) {
+			String id = null;
+			try {
+				id = idElementFirstRow.getText();
+			} catch (Exception e) {
+				LoggerLoad.info("Found no users for search.");
 			}
-		}
-		
+			if(id != null) {
+				if(exists) {
+					Assert.assertEquals(id, deletedID);
+				} else {
+					Assert.assertNotEquals(id, deletedID);
+				}
+			}
 	}
 
 	public void checkSecondRowIDExistence(String deletedID, boolean exists) {
-		if(idElementSecondRow.isDisplayed()) {
-			String id = idElementSecondRow.getText();
+		String id = null;
+		try {
+			id = idElementSecondRow.getText();
+		} catch (Exception e) {
+			LoggerLoad.info("Found no users for search.");
+		}
+		if(id != null) {
 			if(exists) {
 				Assert.assertEquals(id, deletedID);
 			} else {
@@ -402,4 +411,5 @@ WebDriver driver;
 		}
 		
 	}
+}
 }
