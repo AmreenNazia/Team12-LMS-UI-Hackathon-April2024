@@ -8,92 +8,92 @@ Feature: Validating Assign Student Functionality
 
   @AssignStudent_Validate_Landing_ManageUSer
   Scenario: Validate landing in User page
-    Given Admin is on dashboard page after login
-    When Admin clicks User from navigation bar
-    Then Admin should see the "Manage User" in the URL
+    Given Admin is on dashboard page after login..
+    When Admin clicks User from navigation bar..
+    Then Admin should see the "Manage User" in the URL..
 
   @AssignStudent_PopUp_Window_PageValidation
   Scenario: Validate Assign Student Popup window
-    Given Admin is in manage user page
-    When Admin clicks Assign Student button
-    Then Admin should see a pop up open for assign student details with empty form along with Save and Cancel button and close (X) icon on the top right corner of the window
+    Given Admin is in manage user page..
+    When Admin clicks Assign Student button..
+    Then Admin should see a pop up open for assign student details with empty form along with Save and Cancel button and close (X) icon on the top right corner of the window..
 
   @AssignStudent_Validate_InputFields_TextBoxes
   Scenario: Validate input fields and their text boxes in Assign Student form
-    Given Admin is in manage user page
-    When Admin clicks Assign Student button
-    Then Admin should see User Role as R03 and other fields Student Email id, Program Name, Batch Name and Status with respective input boxes
+    Given Admin is in manage user page..
+    When Admin clicks Assign Student button..
+    Then Admin should see User Role as R03 and other fields Student Email id, Program Name, Batch Name and Status with respective input boxes..
 
   @AssignStudent_Validate_DropDown_Boxes_For_StudentEmailId_ProgramName_BatchName
   Scenario: Validate Dropdown in Assign Student Form
-    Given Admin is in manage user page
-    When Admin clicks Assign Student button
-    Then Admin should see drop down boxes with valid data for Student Email id,Program Name and Batch Name
+    Given Admin is in manage user page..
+    When Admin clicks Assign Student button..
+    Then Admin should see drop down boxes with valid data for Student Email id,Program Name and Batch Name..
 
   @AssignStudent_Validate_Radio_Button
   Scenario: Validate radio button in Assign Student Form
-    Given Admin is in manage user page
-    When Admin clicks Assign Student button
-    Then Admin should see two radio button for Status
+    Given Admin is in manage user page..
+    When Admin clicks Assign Student button..
+    Then Admin should see two radio button for Status..
 
   @AssignStudent_Validate_Empty_Form_Submission
   Scenario: Empty Form Submission
-    Given Admin is in Assign Student details pop up page
-    When Admin clicks Save button with entering any data
-    Then Admin gets a Error message alert
+    Given Admin is in Assign Student details pop up page..
+    When Admin clicks Save button with entering any data..
+    Then Admin gets a Error message alert..
 
   @AssignStudent_Validate_Cancel/Close_Icon
   Scenario: Validate Cancel or Close icon on Assign Student form
-    Given Admin is in Assign Student details pop up page
-    When Admin clicks Cancel or Close Icon on Assign Student form
-    Then Assign Student popup window should be closed without saving
+    Given Admin is in Assign Student details pop up page..
+    When Admin clicks Cancel or Close Icon on Assign Student form..
+    Then Assign Student popup window should be closed without saving..
 
   @AssignStudent_Validate_Cancel_Button
   Scenario: Validate Cancel button on Assign Student form
-    Given Admin is in Assign Student details pop up page
-    When Admin clicks Cancel button
-    Then Admin can see the Assign Student popup disappears without assigning
+    Given Admin is in Assign Student details pop up page..
+    When Admin clicks Cancel button..
+    Then Admin can see the Assign Student popup disappears without assigning..
 
   Scenario Outline: Validate the Assign Student form page without giving Student Email id
-    Given Admin is in Assign Student details pop up page
-    When Admin clicks Save button without entering Student Email id using sheetname "<Sheetname>" and rowNumber <RowNumber>
-    Then Admin gets a error message alert as "Student Email id is required"
+    Given Admin is in Assign Student details pop up page..
+    When Admin clicks Save button without entering Student Email id using sheetname "<Sheetname>" and rowNumber <RowNumber>..
+    Then Admin gets a error message alert as "Student Email id is required"..
 
     Examples: 
       | Sheetname | RowNumber |
       | User      |         0 |
 
   Scenario Outline: Validate the Assign Student form page without giving program name
-    Given Admin is in Assign Student details pop up page
-    When Admin clicks Save button without program name using sheetname "<Sheetname>" and rowNumber <RowNumber>
-    Then Admin gets a error message alert as "Program is required"
+    Given Admin is in Assign Student details pop up page..
+    When Admin clicks Save button without program name using sheetname "<Sheetname>" and rowNumber <RowNumber>..
+    Then Admin gets a error message alert as "Program is required"..
 
     Examples: 
       | Sheetname | RowNumber |
       | User      |         0 |
 
   Scenario Outline: Validate the Assign Student form page without giving batch name
-    Given Admin is in Assign Student details pop up page
-    When Admin clicks Save button without batch name using sheetname "<Sheetname>" and rowNumber <RowNumber>
-    Then Admin gets a error message alert as "Batch is required"
+    Given Admin is in Assign Student details pop up page..
+    When Admin clicks Save button without batch name using sheetname "<Sheetname>" and rowNumber <RowNumber>..
+    Then Admin gets a error message alert as "Batch is required"..
 
     Examples: 
       | Sheetname | RowNumber |
       | User      |         0 |
 
   Scenario Outline: Validate the Assign Student form page without giving status
-    Given Admin is in Assign Student details pop up page
-    When Admin clicks Save button without status using sheetname "<Sheetname>" and rowNumber <RowNumber>
-    Then Admin gets a error message alert as "Status is required"
+    Given Admin is in Assign Student details pop up page..
+    When Admin clicks Save button without status using sheetname "<Sheetname>" and rowNumber <RowNumber>..
+    Then Admin gets a error message alert as "Status is required"..
 
     Examples: 
       | Sheetname | RowNumber |
       | User      |         0 |
 
   Scenario Outline: Validate Save button on Assign Student form
-    Given Admin is in Assign Student details pop up page
-    When Enter all the required fields with valid values using "<Sheetname>" and rowNumber <RowNumber> and click Save
-    Then Admin gets a message "Successfully Student Assigned" alert
+    Given Admin is in Assign Student details pop up page..
+    When Enter all the required fields with valid values using "<Sheetname>" and rowNumber <RowNumber> and click Save..
+    Then Admin gets a message "Successfully Student Assigned" alert..
 
     Examples: 
       | Sheetname | RowNumber |
