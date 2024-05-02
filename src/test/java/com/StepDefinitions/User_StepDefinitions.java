@@ -32,19 +32,19 @@ public class User_StepDefinitions {
 
 	}
 
-	@Given("Admin is on dashboard page after Login")
+	@Given("Admin is on dashboard page after Login.")
 	public void admin_is_on_dashboard_page_after_login() {
 		Assert.assertEquals(loginpage.getDashBoardTitle(), Constant.HOME_PAGE_TITLE);
 	}
 
-	@When("Admin clicks {string} from navigation bar")
+	@When("Admin clicks {string} from navigation bar.")
 	public void admin_clicks_from_navigation_bar(String text) {
 		if (userpage.getUser().equals(text))
 			userpage.click_User();
  
 	}
 
-	@Then("Admin should see the {string} in the URL")
+	@Then("Admin should see the {string} in the URL.")
 	public void admin_should_see_the_in_the_url(String text) {
 		LoggerLoad.info("Validate landing in User page");
 		String url = userpage.getUrl();
@@ -54,7 +54,7 @@ public class User_StepDefinitions {
 
 	// **Scenario 2**//
 
-	@Then("Admin should see a heading with text {string} on the page")
+	@Then("Admin should see a heading with text {string} on the page.")
 	public void admin_should_see_a_heading_with_text_on_the_page(String text) {
 		LoggerLoad.info("Validate the heading");
 		String manageUser = userpage.getManageuser();
@@ -62,14 +62,14 @@ public class User_StepDefinitions {
 	}
 
 	// **Scenario 3 **//
-	@Then("Admin should see the text as Showing x to y of z entries along with Pagination icon below the table")
+	@Then("Admin should see the text as Showing x to y of z entries along with Pagination icon below the table.")
 	public void admin_should_see_the_text_as_along_with_pagination_icon_below_the_table() {
 		LoggerLoad.info("Validate the text and pagination icon below the data table");
 		userpage.getpagination();
 	}
 
 	// **Scenario 4 **//
-	@Then("Admin Should see the data table with column names Id, Name, location, Phone Number, Edit\\/Delete")
+	@Then("Admin Should see the data table with column names Id, Name, location, Phone Number, Edit\\/Delete.")
 	public void admin_should_see_the_data_table_with_column_names_id_name_location_phone_number_edit_delete() {
 		LoggerLoad.info("Validate data table headers in the User Page");
 		String data = "ID Name Location Phone Number Edit / Delete";
@@ -78,7 +78,7 @@ public class User_StepDefinitions {
 	}
 
 	// **Scenario 5 **//
-	@Then("Admin should see a Delete button on the top left hand side as Disabled")
+	@Then("Admin should see a Delete button on the top left hand side as Disabled.")
 	public void admin_should_see_a_delete_button_on_the_top_left_hand_side_as_disabled() {
 		LoggerLoad.info("Validating the default state of Delete button");
 		Assert.assertTrue(userpage.getDelete().isDisplayed());
@@ -86,7 +86,7 @@ public class User_StepDefinitions {
 	}
 
 	// **Scenario 6 **//
-	@Then("Admin should be able to see the {string} button above the data table")
+	@Then("Admin should be able to see the {string} button above the data table.")
 	public void admin_should_be_able_to_see_the_button_above_the_data_table(String user) {
 		LoggerLoad.info("Validate Add New user button in User Page");
 		String text = userpage.getaNewUser();
@@ -94,7 +94,7 @@ public class User_StepDefinitions {
 	}
 
 	// **Scenario 7**//
-	@Then("Admin should be able to see the {string} button above  data table")
+	@Then("Admin should be able to see the {string} button above  data table.")
 	public void admin_should_be_able_to_see_the_button_above_data_table(String assignstaff) {
 		LoggerLoad.info("Validate Add New user button in User Page");
 		String staff = userpage.getAssignStaff();
@@ -102,7 +102,7 @@ public class User_StepDefinitions {
 	}
 
 	// **Scenario 8**//
-	@Then("Admin should be able to see {string} button above the data table")
+	@Then("Admin should be able to see {string} button above the data table.")
 	public void admin_should_be_able_to_see_button_above_the_data_table(String assignStudent) {
 		LoggerLoad.info("Validate Assign Student  button in User page");
 		String student = userpage.getAssignStudent();
@@ -110,14 +110,14 @@ public class User_StepDefinitions {
 	}
 
 	// **Scenario 9**//
-	@Then("Admin should be able to see the search text box above the data table")
+	@Then("Admin should be able to see the search text box above the data table.")
 	public void admin_should_be_able_to_see_the_search_text_box_above_the_data_table() {
 		LoggerLoad.info("Validate search box in User page");
 		Assert.assertTrue(userpage.getSearch().isDisplayed());
 	}
 
 	// **Scenario 10**//
-	@Then("Admin should see two records displayed on the data table")
+	@Then("Admin should see two records displayed on the data table.")
 	public void admin_should_see_two_records_displayed_on_the_data_table() {
 		LoggerLoad.info("Validate number of data rows in the data ");
 		int rows = userpage.sizeofRows();
@@ -125,7 +125,7 @@ public class User_StepDefinitions {
 	}
 
 	// Scenario 11**//
-	@Then("Each row in the data table should have a checkbox")
+	@Then("Each row in the data table should have a checkbox.")
 	public void each_row_in_the_data_table_should_have_a_checkbox() {
 		LoggerLoad.info("Each row in the data table should have a checkbox");
 		long count = userpage.getCheckBoxes();
@@ -135,14 +135,14 @@ public class User_StepDefinitions {
 	}
 
 	// Scenario 12**//
-	@Then("Each row in the data table should have a edit icon that is enabled")
+	@Then("Each row in the data table should have a edit icon that is enabled.")
 	public void each_row_in_the_data_table_should_have_a_edit_icon_that_is_enabled() {
 		LoggerLoad.info("Each row in the data table should have a edit icon that is enabled");
 		Assert.assertEquals(userpage.getcount_edit(), userpage.geteditdeleteRows().size());
 	}
 
 	// Scenario 13 **//
-	@Then("Each row in the data table should have a delete icon that is enabled")
+	@Then("Each row in the data table should have a delete icon that is enabled.")
 	public void each_row_in_the_data_table_should_have_a_delete_icon_that_is_enabled() {
 		LoggerLoad.info("Each row in the data table should have a delete icon that is enabled");
 		Assert.assertEquals(userpage.getCount_Delete(), userpage.geteditdeleteRows().size());
@@ -150,7 +150,7 @@ public class User_StepDefinitions {
 	}
 
 	// Scenario 14**//
-	@Given("Admin is on Manage User Page")
+	@Given("Admin is on Manage User Page.")
 	public void admin_is_on_manage_user_page() {
 		userpage.click_User();
 		Assert.assertEquals(userpage.getManageuser(), Constant.MANAGE_USERPAGE_HEADER);
@@ -161,7 +161,7 @@ public class User_StepDefinitions {
 		userpage.EnterUsername();
 	}
 
-	@Then("Admin should see user displayed with the entered name")
+	@Then("Admin should see user displayed with the entered name.")
 	public void admin_should_see_user_displayed_with_the_entered_name() {
 		LoggerLoad.info("search user by name");
 		Assert.assertTrue(userpage.searchedRow_count() == 1);
@@ -169,13 +169,13 @@ public class User_StepDefinitions {
 	}
 
 	// **Scenario 15**//
-	@When("Admin enters the {string} not present in the data table on the Search box")
+	@When("Admin enters the {string} not present in the data table on the Search box.")
 	public void admin_enters_the_not_present_in_the_data_table_on_the_search_box(String name)
 			throws InterruptedException {
 		userpage.SearchwithNoName(name);
 	}
 
-	@Then("Admin should see zero entries on the data table")
+	@Then("Admin should see zero entries on the data table.")
 	public void admin_should_see_zero_entries_on_the_data_table() {
 		LoggerLoad.info("Validating the Search with unrelated keyword");
 		Assert.assertTrue(userpage.searchedRow_count() == 0);
@@ -467,7 +467,7 @@ public class User_StepDefinitions {
 		ExcelReader reader = new ExcelReader();
 
 		List<Map<String, String>> testdata = reader.getData(
-				System.getProperty("user.dir")+"/src/test/resources/TestData/Team12-TestData-LMS-UI-Hackathon-April2024-2.xlsx",
+				System.getProperty("user.dir")+"/src/test/resources/TestData/Team12-TestData-LMS-UI-Hackathon-April2024.xlsx",
 				sheetName);
 		String skill = testdata.get(rowNumber).get("Skill");
 		String programname = testdata.get(rowNumber).get("Program Name");
@@ -488,7 +488,7 @@ public class User_StepDefinitions {
 		ExcelReader reader = new ExcelReader();
 
 		List<Map<String, String>> testdata = reader.getData(
-				System.getProperty("user.dir")+"/src/test/resources/TestData/Team12-TestData-LMS-UI-Hackathon-April2024-2.xlsx",
+				System.getProperty("user.dir")+"/src/test/resources/TestData/Team12-TestData-LMS-UI-Hackathon-April2024.xlsx",
 				sheetName);
 		String emailid = testdata.get(RowNumber).get("Staff Email Id");
 		String programname = testdata.get(RowNumber).get("Program Name");
@@ -508,7 +508,7 @@ public class User_StepDefinitions {
 			Integer RowNumber) throws InvalidFormatException, IOException, InterruptedException {
 		ExcelReader reader = new ExcelReader();
 
-		List<Map<String, String>> testdata = reader.getData(System.getProperty("user.dir")+"/src/test/resources/TestData/Team12-TestData-LMS-UI-Hackathon-April2024-2.xlsx",
+		List<Map<String, String>> testdata = reader.getData(System.getProperty("user.dir")+"/src/test/resources/TestData/Team12-TestData-LMS-UI-Hackathon-April2024.xlsx",
 				sheetName);
 		String emailid = testdata.get(RowNumber).get("Staff Email Id");
 		String skill = testdata.get(RowNumber).get("Skill");
@@ -523,7 +523,7 @@ public class User_StepDefinitions {
 		ExcelReader reader = new ExcelReader();
 
 		List<Map<String, String>> testdata = reader.getData(
-				System.getProperty("user.dir")+"/src/test/resources/TestData/Team12-TestData-LMS-UI-Hackathon-April2024-2.xlsx",
+				System.getProperty("user.dir")+"/src/test/resources/TestData/Team12-TestData-LMS-UI-Hackathon-April2024.xlsx",
 				sheetName);
 		String emailid = testdata.get(RowNumber).get("Staff Email Id");
 		String skill = testdata.get(RowNumber).get("Skill");
@@ -538,7 +538,7 @@ public class User_StepDefinitions {
 		ExcelReader reader = new ExcelReader();
 
 		List<Map<String, String>> testdata = reader.getData(
-				System.getProperty("user.dir")+"/src/test/resources/TestData/Team12-TestData-LMS-UI-Hackathon-April2024-2.xlsx",
+				System.getProperty("user.dir")+"/src/test/resources/TestData/Team12-TestData-LMS-UI-Hackathon-April2024.xlsx",
 				sheetName);
 		String emailid = testdata.get(RowNumber).get("Staff Email Id");
 		String skill = testdata.get(RowNumber).get("Skill");
@@ -567,7 +567,7 @@ public class User_StepDefinitions {
 		ExcelReader reader = new ExcelReader();
 
 		List<Map<String, String>> testdata = reader.getData(
-				System.getProperty("user.dir")+"/src/test/resources/TestData/Team12-TestData-LMS-UI-Hackathon-April2024-2.xlsx",
+				System.getProperty("user.dir")+"/src/test/resources/TestData/Team12-TestData-LMS-UI-Hackathon-April2024.xlsx",
 				sheetName);
 		String emailid = testdata.get(RowNumber).get("Staff Email Id");
 		String skill = testdata.get(RowNumber).get("Skill");
