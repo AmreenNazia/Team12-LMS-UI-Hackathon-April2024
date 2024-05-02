@@ -14,10 +14,12 @@ import com.PageObjects.POM_LoginPage;
 import com.PageObjects.POM_UserEditPage;
 import com.PageObjects.POM_UserPage;
  
+ 
 
 public class pageObjectManager {
 
 	WebDriver driver;
+ 
  
 	private POM_HomePageNew homepage;
  
@@ -32,15 +34,18 @@ public class pageObjectManager {
 	 
  
  
+ 
 	
 	public pageObjectManager(WebDriver driver)
 	{
  
 		this.driver = driver;
 	}
+ 
 
 	public POM_LoginPage getLoginPage() {
 		if (loginpage == null) {
+ 
 			loginpage = new POM_LoginPage(driver);
 		}
 		return loginpage;
@@ -102,9 +107,10 @@ public class pageObjectManager {
 		return programpage;
 		
 	}
- 
+  
  
  
  
 
 }
+ 
