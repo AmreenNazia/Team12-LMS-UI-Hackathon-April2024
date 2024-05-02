@@ -9,7 +9,7 @@ import io.cucumber.testng.CucumberOptions;
 		"src/test/resources/Features/15_UserEdit.feature", }, glue = { "com.StepDefinitions",
 
 				"com.ApplicationHooks" }, monochrome = true, dryRun = false, plugin = { "pretty",
-						"html:target/HtmlReport/htmlreport.html",
+						"html:target/HtmlReport/htmlreport_02.html",
 						"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 						"io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
 
