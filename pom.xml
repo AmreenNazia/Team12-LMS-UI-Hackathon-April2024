@@ -43,8 +43,8 @@
 			<artifactId>selenium-java</artifactId>
 			<version>4.18.1</version>
 		</dependency>
- 
- 
+
+
 
 		<!--
 		https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
@@ -56,7 +56,7 @@
 
 		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
 		<dependency>
- 
+
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
 			<version>7.9.0</version>
@@ -78,11 +78,11 @@
 			<artifactId>log4j-api</artifactId>
 			<version>2.23.0</version>
 		</dependency>
- 
+
 		<!--
 		https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
 		<dependency>
- 
+
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
 			<version>2.23.0</version>
@@ -102,7 +102,7 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 			<version>2.0.12</version>
- 
+
 		</dependency>
 		<!--
 		https://mvnrepository.com/artifact/tech.grasshopper/extentreports-cucumber7-adapter -->
@@ -111,14 +111,14 @@
 			<artifactId>extentreports-cucumber7-adapter</artifactId>
 			<version>1.14.0</version>
 		</dependency>
- 
+
 
 		<!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-testng -->
 		<dependency>
 			<groupId>io.qameta.allure</groupId>
 			<artifactId>allure-testng</artifactId>
 			<version>2.27.0</version>
- 
+
 		</dependency>
 		<!--
 		https://mvnrepository.com/artifact/io.qameta.allure/allure-cucumber7-jvm -->
@@ -134,7 +134,7 @@
 			<version>7.15.0</version>
 		</dependency>
 
- 
+
 		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
 		<dependency>
 			<groupId>io.cucumber</groupId>
@@ -156,7 +156,7 @@
 			<artifactId>poi</artifactId>
 			<version>5.2.2</version>
 		</dependency>
- 
+
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
@@ -169,7 +169,7 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>3.14.0</version>
 		</dependency>
- 
+
 
 <dependency>
 			<groupId>net.sourceforge.tess4j</groupId>
@@ -178,6 +178,5 @@
 		</dependency>
 	</dependencies>
 	<!-- https://mvnrepository.com/artifact/net.sourceforge.tess4j/tess4j -->
-		
+
 </project>
- 

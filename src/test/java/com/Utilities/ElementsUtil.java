@@ -1,13 +1,13 @@
 package com.Utilities;
 
 import java.time.Duration;
- 
- 
- 
+
+
+
  import java.util.Set;
  import java.util.List;
- 
- 
+
+
 
 
 import org.openqa.selenium.JavascriptExecutor;
@@ -31,7 +31,7 @@ public class ElementsUtil {
 		}
 		return webElement;
 	}
- 
+
 	public static List<WebElement> waitForElementsVisibility(WebDriver driver, List<WebElement> elememt, long durationInSeconds) {
 		// explicit wait
 		List<WebElement> webElement = null;
@@ -44,7 +44,7 @@ public class ElementsUtil {
 		}
 		return webElement;
 	}
- 
+
 
 	public static void ScrolltoElementandClick(WebDriver driver, WebElement element, long durationInSeconds) {
 
@@ -86,7 +86,7 @@ public class ElementsUtil {
 					+ ". Exception is: " + e.getMessage());
 		}
 	}
- 
+
 
 	public static boolean isTextBox(WebDriver driver, WebElement element) {
 
@@ -103,9 +103,9 @@ public class ElementsUtil {
 		return tagName.equals("input") && (type.equalsIgnoreCase("radio"));
 
 	}
-	
- 
- 
+
+
+
 
 	public static void sendInput(WebDriver driver, WebElement element, String textToBeTyped,
 			long durationInSeconds) {
@@ -150,5 +150,5 @@ public class ElementsUtil {
 
 
 
- 
+
 }
