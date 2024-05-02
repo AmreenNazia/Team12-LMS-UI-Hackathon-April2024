@@ -6,9 +6,8 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(tags = "", features = {"src/test/resources/Features/14_AddNewUser.feature",
-										"src/test/resources/Features/15_UserEdit.feature",
-										},
-							glue = { "com.StepDefinitions",
+					"src/test/resources/Features/15_UserEdit.feature",},
+		 glue = { "com.StepDefinitions",
 		 
 "com.ApplicationHooks" }, monochrome = true, dryRun = false, plugin = { "pretty",
 		"html:cucumber-report/htmlReport.html",
