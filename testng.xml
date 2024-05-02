@@ -4,6 +4,7 @@
   <test thread-count="5" name="Test">
    <classes>
       <class name="com.Runner.TestRunner"/>
+      <class name="com.Runner.TestRunner_02"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
