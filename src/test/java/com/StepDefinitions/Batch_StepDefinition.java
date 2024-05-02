@@ -29,8 +29,8 @@ public class Batch_StepDefinition {
 	public Batch_StepDefinition(TestContext testcontext) {
 
 		this.testcontext = testcontext;
-		dashboard = testcontext.getpageObjectManager().getdashboardPage();
-		batchPage = testcontext.getpageObjectManager().getBatchPage();
+		dashboard = testcontext.pageobjectmanager.getDashboardPage();
+		batchPage = testcontext.pageobjectmanager.getBatchPage();
 	}
 
 	@Given("Admin is on dashboard page after Login_Batch")

@@ -36,10 +36,10 @@ public class program3_StepDefinition {
 	  public program3_StepDefinition(TestContext testcontext) {
 			
 			this.testcontext = testcontext;
-			loginpage = testcontext.pageobjectmanager.getlogin();
-			programpage = testcontext.pageobjectmanager.getprogram();
+			loginpage = testcontext.pageobjectmanager.getLoginPage();
+			programpage = testcontext.pageobjectmanager.getProgramPage();
 			
-			dashboardpage=testcontext.pageobjectmanager.getdashboardPage();
+			dashboardpage=testcontext.pageobjectmanager.getDashboardPage();
 
 		}
 	  @When("Admin clicks Edit button on the data table for any row for program")
@@ -63,7 +63,8 @@ public class program3_StepDefinition {
 	  public void admin_edits_the_name_column_using_sheetname_and_row_number_and_clicks_save_button_for_program(String SheetName, Integer RowNumber) throws InvalidFormatException, IOException {
 		  ExcelReader reader = new ExcelReader();
 			
-			List<Map<String, String>> testdata = reader.getData("C:\\Users\\subhashdevineni\\git\\Team12_XpathWarriors_LMS_UI_April2024\\src\\test\\resources\\TestData\\Team12-TestData-LMS-UI-Hackathon-April2024.xlsx",SheetName);
+			List<Map<String, String>> testdata = reader.getData(System.getProperty("user.dir")+
+					"/src/test/resources/TestData/Team12-TestData-LMS-UI-Hackathon-April2024-2.xlsx",SheetName);
 			
 			String programName = testdata.get(RowNumber).get("EditprogramName");
 			//String programDescription = testdata.get(RowNumber).get("programDescription");
@@ -71,11 +72,7 @@ public class program3_StepDefinition {
 			programpage.fillprogramname( programName);
 
 		  
-		  
-		  //		  Thread.sleep(2000);
-//		  programpage.geteditpopupwindow();
-//		  programpage.editvalidProgramName();
-//		  programpage.clickonsave();
+		
 	  }
 
 	  @Then("Admin gets a message {string} alert and able to see the updated name in the table for the particular program")
@@ -86,20 +83,15 @@ public class program3_StepDefinition {
 	  public void admin_edits_the_description_column_using_sheetname_and_row_number_and_clicks_save_button_for_program(String SheetName, Integer RowNumber) throws InvalidFormatException, IOException {
 		  ExcelReader reader = new ExcelReader();
 			
-			List<Map<String, String>> testdata = reader.getData("C:\\Users\\subhashdevineni\\git\\Team12_XpathWarriors_LMS_UI_April2024\\src\\test\\resources\\TestData\\Team12-TestData-LMS-UI-Hackathon-April2024.xlsx",SheetName);
+			List<Map<String, String>> testdata = reader.getData(System.getProperty("user.dir")+
+					"/src/test/resources/TestData/Team12-TestData-LMS-UI-Hackathon-April2024-2.xlsx",SheetName);
 			
 			//String programName = testdata.get(RowNumber).get("invalidprogramName");
 			String programDescription = testdata.get(RowNumber).get("EditprogramDescription");
 			
 			programpage.fillprogramdescription( programDescription);
 	  }
-//	  @When("Admin edits the Description column and clicks save button for program")
-//	  public void admin_edits_the_description_column_and_clicks_save_button_for_program() throws InterruptedException {
-//		  Thread.sleep(2000);
-//		  programpage.geteditpopupwindow();
-//		  programpage.editvalidProgramDescription();
-//		  programpage.clickonsave();
-//	  }
+
 
 	  @Then("Admin gets a message {string} alert and able to see the updated description in the table for the particular program")
 	  public void admin_gets_a_message_alert_and_able_to_see_the_updated_description_in_the_table_for_the_particular_program(String string) {
@@ -124,7 +116,8 @@ public class program3_StepDefinition {
 		  programpage.geteditpopupwindow();
 		  ExcelReader reader = new ExcelReader();
 			
-			List<Map<String, String>> testdata = reader.getData("C:\\Users\\subhashdevineni\\git\\Team12_XpathWarriors_LMS_UI_April2024\\src\\test\\resources\\TestData\\Team12-TestData-LMS-UI-Hackathon-April2024.xlsx",SheetName);
+			List<Map<String, String>> testdata = reader.getData(System.getProperty("user.dir")
+					+ "/src/test/resources/TestData/Team12-TestData-LMS-UI-Hackathon-April2024-2.xlsx",SheetName);
 				
 				String programName = testdata.get(RowNumber).get("invalidprogramName");
 				String programDescription = testdata.get(RowNumber).get("invalidprogramDescription");
@@ -141,7 +134,8 @@ public class program3_StepDefinition {
 	  
 		  ExcelReader reader = new ExcelReader();
 			
-			List<Map<String, String>> testdata = reader.getData("C:\\Users\\subhashdevineni\\git\\Team12_XpathWarriors_LMS_UI_April2024\\src\\test\\resources\\TestData\\Team12-TestData-LMS-UI-Hackathon-April2024.xlsx",SheetName);
+			List<Map<String, String>> testdata = reader.getData(System.getProperty("user.dir")+
+									"/src/test/resources/TestData/Team12-TestData-LMS-UI-Hackathon-April2024-2.xlsx",SheetName);
 				
 				String programName = testdata.get(RowNumber).get("EditprogramName");
 				String programDescription = testdata.get(RowNumber).get("EditprogramDescription");
@@ -150,15 +144,7 @@ public class program3_StepDefinition {
 				
 	  }
 				
-//	  @When("Admin edit  using sheetname {string} and RowNumber {int} clicks Cancel button on edit popup for program")
-//	  public void admin_clicks_cancel_button_on_edit_popup_for_program() {
-////			programpage.clickonprogramname();
-////			 programpage.editvalidProgramName();
-////			 programpage.clickonprogramdescription();
-////			 programpage.editvalidProgramDescription();
-////			 programpage.clickonActiveStatus();
-//			 programpage.clickoncancel();
-//	  }
+//	
 
 	  @Then("Admin can see the Program details popup disappears and can see nothing changed for particular program")
 	  public void admin_can_see_the_program_details_popup_disappears_and_can_see_nothing_changed_for_particular_program() {
@@ -171,23 +157,15 @@ public class program3_StepDefinition {
 	
 		  ExcelReader reader = new ExcelReader();
 			
-			List<Map<String, String>> testdata = reader.getData("C:\\Users\\subhashdevineni\\git\\Team12_XpathWarriors_LMS_UI_April2024\\src\\test\\resources\\TestData\\Team12-TestData-LMS-UI-Hackathon-April2024.xlsx",SheetName);
+			List<Map<String, String>> testdata = reader.getData(System.getProperty("user.dir")+
+					"/src/test/resources/TestData/Team12-TestData-LMS-UI-Hackathon-April2024-2.xlsx",SheetName);
 				
 				String programName = testdata.get(RowNumber).get("EditprogramName");
 				String programDescription = testdata.get(RowNumber).get("EditprogramDescription");
 				
 				programpage.fillprogramForm(programName, programDescription);
 		  }
-//	  @When("Admin clicks Save button on edit popup for program")
-//	  public void admin_clicks_save_button_on_edit_popup_for_program() {
-////		  programpage.clickonprogramname();
-////			 programpage.editvalidProgramName();
-////			 programpage.clickonprogramdescription();
-////			 programpage.editvalidProgramDescription();
-////			 programpage.editprogramstatus();
-//			 programpage.clickonsave();
-		
-	//  }
+
 
 	  @Then("Admin gets a message {string} alert and able to see the updated details in the table for the particular program")
 	  public void admin_gets_a_message_alert_and_able_to_see_the_updated_details_in_the_table_for_the_particular_program(String string) {

@@ -29,8 +29,8 @@ public class UserAssignStudent_Steps {
 
 	public UserAssignStudent_Steps(TestContext testcontext) {
 		this.testcontext = testcontext;
-		loginpage = testcontext.getpageObjectManager().getLoginPage();
-		userAssignStudent = testcontext.getpageObjectManager().getUserAssignStudentPage();
+		loginpage = testcontext.getPageObjectManager().getLoginPage();
+		userAssignStudent = testcontext.getPageObjectManager().getUserAssignStudentPage();
 	}
 
 	@Given("Admin is on dashboard page after login")

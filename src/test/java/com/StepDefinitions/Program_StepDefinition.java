@@ -23,10 +23,10 @@ public class Program_StepDefinition{
     public Program_StepDefinition(TestContext testcontext) {
 		
 		this.testcontext = testcontext;
-		loginpage = testcontext.pageobjectmanager.getlogin();
-		programpage = testcontext.pageobjectmanager.getprogram();
+		loginpage = testcontext.pageobjectmanager.getLoginPage();
+		programpage = testcontext.pageobjectmanager.getProgramPage();
 		
-		dashboardpage=testcontext.pageobjectmanager.getdashboardPage();
+		dashboardpage=testcontext.pageobjectmanager.getDashboardPage();
 
 	}
    

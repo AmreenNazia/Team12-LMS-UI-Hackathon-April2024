@@ -14,7 +14,7 @@ public class ProgramSorting_StepDefinition {
 	public ProgramSorting_StepDefinition(TestContext testcontext) {
 
 		this.testcontext = testcontext;
-		programpage = testcontext.getpageObjectManager().getProgramPage();
+		programpage = testcontext.pageobjectmanager.getProgramPage();
 	}
 
 	@Then("Admin should land on dashboard page and clicks program on the navigation bar")
